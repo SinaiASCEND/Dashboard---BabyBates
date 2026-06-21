@@ -1,0 +1,1164 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<template id="__bundler_thumbnail">
+<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <rect width="100" height="100" rx="18" fill="#00AEEF"/>
+  <rect x="30" y="22" width="40" height="56" rx="6" fill="#ffffff"/>
+  <rect x="44" y="14" width="12" height="14" rx="3" fill="#D80B8C"/>
+  <line x1="38" y1="40" x2="62" y2="40" stroke="#00AEEF" stroke-width="4" stroke-linecap="round"/>
+  <line x1="38" y1="50" x2="62" y2="50" stroke="#58595B" stroke-width="4" stroke-linecap="round"/>
+  <line x1="38" y1="60" x2="54" y2="60" stroke="#58595B" stroke-width="4" stroke-linecap="round"/>
+</svg>
+</template>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; }
+  body { font-family: 'Barlow', 'Calibri', system-ui, sans-serif; color: #2b2b2d; background: #F7F7F7; -webkit-font-smoothing: antialiased; }
+  ::-webkit-scrollbar { width: 11px; height: 11px; }
+  ::-webkit-scrollbar-thumb { background: #cdced0; border-radius: 6px; border: 3px solid transparent; background-clip: content-box; }
+  ::-webkit-scrollbar-thumb:hover { background: #b3b4b6; background-clip: content-box; }
+  input::placeholder { color: #9a9b9d; }
+  input:focus { outline: none; }
+  @keyframes rpsspin { to { transform: rotate(360deg); } }
+</style>
+</helmet>
+
+<div style="display:flex; height:100vh; width:100%; overflow:hidden; background:#F7F7F7;">
+
+  <!-- backdrop for mobile sidebar -->
+  <div onClick="{{ closeSidebar }}" style="{{ backdropStyle }}"></div>
+
+  <!-- ===================== SIDEBAR ===================== -->
+  <aside style="{{ sidebarStyle }}">
+    <div style="display:flex; align-items:center; gap:11px; padding:6px 10px 22px;">
+      <div style="width:34px; height:34px; border-radius:9px; background:#0073A2; display:flex; align-items:center; justify-content:center; color:#fff; font-weight:800; font-size:20px; font-family:'Barlow Condensed',sans-serif; flex:none;">+</div>
+      <div style="line-height:1.05;">
+        <div style="color:#fff; font-weight:700; font-size:16px; letter-spacing:-0.01em;">Baby Bates</div>
+        <div style="color:#9a9b9d; font-size:11px; font-weight:500; letter-spacing:0.04em;">Bates&rsquo; Pocket Guide companion</div>
+      </div>
+    </div>
+
+    <div style="font-family:'Barlow Condensed',sans-serif; letter-spacing:0.16em; text-transform:uppercase; color:#76777a; font-weight:600; font-size:11px; padding:0 14px 8px;">Browse</div>
+
+    <nav style="display:flex; flex-direction:column;">
+      <div onClick="{{ nav.home }}" style="{{ navStyles.home }}">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg>
+        <span>Home</span>
+      </div>
+      <div onClick="{{ nav.core }}" style="{{ navStyles.core }}">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3v6a4 4 0 0 0 8 0V3"/><path d="M9 13v3a5 5 0 0 0 10 0v-2"/><circle cx="19" cy="11" r="2"/></svg>
+        <span style="flex:1;">Core PE Skills</span>
+        <span style="{{ badgeStyle }}">26</span>
+      </div>
+      <div onClick="{{ nav.clusters }}" style="{{ navStyles.clusters }}">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+        <span style="flex:1;">Cluster Exams</span>
+        <span style="{{ badgeStyle }}">8</span>
+      </div>
+      <div onClick="{{ nav.scripts }}" style="{{ navStyles.scripts }}">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h11l3 3v13H5z"/><path d="M9 9h7M9 13h7M9 17h4"/></svg>
+        <span style="flex:1;">Illness Scripts</span>
+        <span style="{{ badgeStyle }}">71</span>
+      </div>
+      <div onClick="{{ nav.labs }}" style="{{ navStyles.labs }}">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v6l-5 9a2 2 0 0 0 2 3h10a2 2 0 0 0 2-3l-5-9V3"/></svg>
+        <span>Lab Values</span>
+      </div>
+      <div onClick="{{ nav.algorithms }}" style="{{ navStyles.algorithms }}">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="2.4"/><circle cx="18" cy="6" r="2.4"/><circle cx="12" cy="18" r="2.4"/><path d="M6 8.4v2a3 3 0 0 0 3 3h6a3 3 0 0 0 3-3v-2"/><path d="M12 15.6v-2"/></svg>
+        <span>Clinical Pathways</span>
+      </div>
+      <div onClick="{{ nav.devices }}" style="{{ navStyles.devices }}">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2" width="10" height="20" rx="2.5"/><path d="M11 6h2"/></svg>
+        <span style="flex:1;">Device Mods</span>
+        <span style="{{ badgeStyle }}">32</span>
+      </div>
+      <div onClick="{{ nav.abbrev }}" style="{{ navStyles.abbrev }}">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7V5h16v2"/><path d="M9 19h6M12 5v14"/></svg>
+        <span>Abbreviations</span>
+      </div>
+    </nav>
+
+    <div style="height:1px; background:#5a5b5d; margin:14px 10px;"></div>
+    <div style="font-family:'Barlow Condensed',sans-serif; letter-spacing:0.16em; text-transform:uppercase; color:#76777a; font-weight:600; font-size:11px; padding:0 14px 8px;">Yours</div>
+    <nav style="display:flex; flex-direction:column;">
+      <div onClick="{{ nav.favorites }}" style="{{ navStyles.favorites }}">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4l2.4 5.4 5.6.5-4.2 3.7 1.3 5.5L12 16.8 6.9 19.6l1.3-5.5L4 10.4l5.6-.5z"/></svg>
+        <span style="flex:1;">Favorites</span>
+        <span style="{{ favBadgeStyle }}">{{ favCount }}</span>
+      </div>
+      <div onClick="{{ nav.ack }}" style="{{ navStyles.ack }}">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H7l-3 3z"/><path d="M8 9h8M8 12h5"/></svg>
+        <span>Acknowledgement</span>
+      </div>
+    </nav>
+
+    <div style="margin-top:auto; padding-top:16px;">
+      <div style="display:flex; align-items:center; gap:10px; padding:10px; border-radius:10px; background:rgba(255,255,255,.06);">
+        <div style="width:30px; height:30px; border-radius:50%; background:#0073A2; color:#fff; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:12px; flex:none;">ME</div>
+        <div style="line-height:1.15; min-width:0;">
+          <div style="color:#e8e8e9; font-size:13px; font-weight:600;">Medical Student</div>
+          <div style="color:#9a9b9d; font-size:11px;">Core + Cluster track</div>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ===================== MAIN ===================== -->
+  <main style="flex:1; display:flex; flex-direction:column; min-width:0; height:100vh;">
+    <!-- top bar -->
+    <header style="display:flex; align-items:center; gap:14px; padding:16px 30px; border-bottom:1px solid #E4E4E5; background:#fff; flex:none;">
+      <div onClick="{{ toggleSidebar }}" style="{{ hamburgerStyle }}">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#58595B" stroke-width="2.2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </div>
+      <div style="flex:1; max-width:620px; display:flex; align-items:center; gap:11px; background:#F7F7F7; border:1.5px solid #E4E4E5; border-radius:10px; padding:10px 15px;" style-focus-within="border-color:#0073A2;">
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#0073A2" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+        <input value="{{ searchQ }}" onInput="{{ onSearch }}" placeholder="Search maneuvers, scripts, labs, devices, abbreviations…" style="border:none; background:transparent; flex:1; font-family:inherit; font-size:15px; color:#2b2b2d;" />
+        <span onClick="{{ clearSearch }}" style="{{ clearBtnStyle }}">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#8b8c8e" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+        </span>
+      </div>
+      <div onClick="{{ toggleAckCard }}" title="Adapted from Bates&rsquo; Pocket Guide — Acknowledgments" style="margin-left:auto; width:33px; height:56px; border-radius:4px; overflow:hidden; border:1px solid #E4E4E5; cursor:pointer; flex:none; box-shadow:0 2px 6px rgba(0,0,0,.16);" style-hover="box-shadow:0 4px 14px rgba(0,0,0,.24);">
+        <img src="./assets/bates-cover.png" alt="Adapted from Bates&rsquo; Pocket Guide" style="width:100%; height:100%; object-fit:cover; display:block;" />
+      </div>
+    </header>
+
+    <!-- ========== ACKNOWLEDGMENTS POPOVER CARD ========== -->
+    <sc-if value="{{ ackCardOpen }}" hint-placeholder-val="{{ false }}">
+      <div onClick="{{ closeAckCard }}" style="position:fixed; inset:0; background:rgba(20,22,30,.34); z-index:60; display:flex; align-items:flex-start; justify-content:flex-end; padding:78px 30px 30px;">
+        <div onClick="{{ stop }}" style="width:380px; max-width:calc(100vw - 60px); background:#fff; border-radius:16px; overflow:hidden; box-shadow:0 18px 50px rgba(0,0,0,.3); border:1px solid #E4E4E5;">
+          <div style="height:6px; background:#0073A2;"></div>
+          <div style="padding:22px 22px 20px;">
+            <div style="display:flex; gap:16px; align-items:flex-start;">
+              <img src="./assets/bates-cover.png" alt="Bates&rsquo; Pocket Guide to Physical Examination and History Taking, 10th edition" style="width:78px; height:auto; border-radius:5px; box-shadow:0 4px 14px rgba(0,0,0,.2); flex:none;" />
+              <div style="flex:1; min-width:0;">
+                <div style="font-family:'Barlow Condensed',sans-serif; letter-spacing:0.12em; text-transform:uppercase; color:#0073A2; font-weight:600; font-size:11px; margin-bottom:5px;">Source text</div>
+                <div style="font-weight:700; font-size:16px; line-height:1.22; letter-spacing:-0.01em;">Bates&rsquo; Pocket Guide to Physical Examination and History Taking</div>
+                <div style="display:flex; align-items:center; gap:9px; margin-top:11px;">
+                  <img src="./assets/soriano.jpg" alt="Rainier P. Soriano, MD" style="width:34px; height:34px; border-radius:50%; object-fit:cover; flex:none;" />
+                  <div style="line-height:1.2;">
+                    <div style="font-weight:700; font-size:13px;">Rainier P. Soriano, MD</div>
+                    <div style="font-size:11.5px; color:#8b8c8e;">Lead author</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div style="font-size:12.5px; color:#58595B; line-height:1.55; border-left:3px solid #E4E4E5; padding-left:12px; margin:16px 0 14px;">Soriano, Rainier P., et al. <em>Bates&rsquo; Pocket Guide to Physical Examination and History Taking.</em> 10th ed., Wolters Kluwer, 2026.</div>
+            <p style="font-size:12.5px; line-height:1.6; color:#8b8c8e; margin:0 0 16px;">Clinical content is adapted from this text for personal study. Please do not copy, redistribute, or reproduce this material.</p>
+            <div onClick="{{ goAckFull }}" style="display:inline-flex; align-items:center; gap:6px; font-size:13px; font-weight:600; color:#0073A2; cursor:pointer;">Full acknowledgments <span style="font-size:14px;">&rarr;</span></div>
+          </div>
+        </div>
+      </div>
+    </sc-if>
+
+    <div style="flex:1; overflow-y:auto; overflow-x:hidden;">
+      <div style="max-width:1080px; margin:0 auto; padding:30px 30px 80px;">
+
+        <!-- ============ SEARCH RESULTS ============ -->
+        <sc-if value="{{ isSearching }}" hint-placeholder-val="{{ false }}">
+          <div>
+            <div style="font-family:'Barlow Condensed',sans-serif; letter-spacing:0.14em; text-transform:uppercase; color:#68357C; font-weight:600; font-size:12px;">Search</div>
+            <h1 style="font-size:25px; font-weight:700; margin:4px 0 22px;">{{ searchCount }} results for &ldquo;{{ searchQ }}&rdquo;</h1>
+            <sc-if value="{{ searchEmpty }}" hint-placeholder-val="{{ false }}">
+              <div style="padding:40px; text-align:center; color:#8b8c8e; background:#fff; border:1px solid #E4E4E5; border-radius:14px;">No matches. Try a maneuver, complaint, lab, device, or abbreviation.</div>
+            </sc-if>
+            <div style="display:flex; flex-direction:column; gap:9px;">
+              <sc-for list="{{ searchResults }}" as="r" hint-placeholder-count="5">
+                <div onClick="{{ r.onClick }}" style="display:flex; align-items:center; gap:14px; padding:14px 18px; background:#fff; border:1px solid #E4E4E5; border-radius:11px; cursor:pointer;" style-hover="border-color:#0073A2; box-shadow:0 2px 10px rgba(0,0,0,.05);">
+                  <span style="font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:#fff; background:{{ r.color }}; padding:4px 9px; border-radius:5px; flex:none;">{{ r.kind }}</span>
+                  <div style="flex:1; min-width:0;">
+                    <div style="font-weight:600; font-size:15px; color:#2b2b2d;">{{ r.label }}</div>
+                    <div style="font-size:13px; color:#8b8c8e; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{ r.sub }}</div>
+                  </div>
+                  <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#c4c5c7" stroke-width="2.4" stroke-linecap="round"><path d="M9 6l6 6-6 6"/></svg>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ showBody }}" hint-placeholder-val="{{ true }}">
+        <div>
+
+        <!-- ============ HOME ============ -->
+        <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+          <div>
+            <div style="font-family:'Barlow Condensed',sans-serif; letter-spacing:0.16em; text-transform:uppercase; color:#68357C; font-weight:600; font-size:13px;">Physical exam &middot; Illness scripts &middot; Reference</div>
+            <h1 style="font-size:44px; line-height:1.02; font-weight:800; letter-spacing:-0.025em; margin:8px 0 8px; max-width:640px;">Baby Bates</h1>
+            <p style="font-size:16px; line-height:1.6; color:#58595B; margin:0 0 14px; max-width:620px;">Clinical content is adapted from Soriano, Rainier P., et al. <em>Bates&rsquo; Pocket Guide to Physical Examination and History Taking</em> (10th ed., Wolters Kluwer, 2026).</p>
+            <p style="font-size:13.5px; line-height:1.55; color:#8b8c8e; margin:0 0 30px; max-width:620px;">For personal study only. Please do not copy, redistribute, or reproduce this material. All rights to the source content remain with the authors and publisher. See <span onClick="{{ nav.ack }}" style="color:#0073A2; font-weight:600; cursor:pointer;">Acknowledgments</span>.</p>
+
+            <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(248px, 1fr)); gap:16px;">
+              <div onClick="{{ nav.core }}" style="background:#fff; border:1px solid #E4E4E5; border-radius:14px; padding:22px; cursor:pointer;" style-hover="border-color:#0073A2; box-shadow:0 4px 16px rgba(0,0,0,.06); transform:translateY(-2px);">
+                <div style="width:44px; height:44px; border-radius:11px; background:#e6f0f7; display:flex; align-items:center; justify-content:center; margin-bottom:15px;"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="#0E3692" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3v6a4 4 0 0 0 8 0V3"/><path d="M9 13v3a5 5 0 0 0 10 0v-2"/><circle cx="19" cy="11" r="2"/></svg></div>
+                <div style="font-weight:700; font-size:18px; margin-bottom:4px;">Core PE Skills</div>
+                <div style="font-size:13.5px; line-height:1.45; color:#6f7072;">The 8 universal sections every patient receives, with FULL / PARTIAL criteria.</div>
+                <div style="margin-top:15px; font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:13px; letter-spacing:0.08em; color:#0073A2;">26 MANEUVERS &rarr;</div>
+              </div>
+              <div onClick="{{ nav.clusters }}" style="background:#fff; border:1px solid #E4E4E5; border-radius:14px; padding:22px; cursor:pointer;" style-hover="border-color:#0073A2; box-shadow:0 4px 16px rgba(0,0,0,.06); transform:translateY(-2px);">
+                <div style="width:44px; height:44px; border-radius:11px; background:#e6f0f7; display:flex; align-items:center; justify-content:center; margin-bottom:15px;"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="#0E3692" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+                <div style="font-weight:700; font-size:18px; margin-bottom:4px;">Cluster Exams</div>
+                <div style="font-size:13.5px; line-height:1.45; color:#6f7072;">Hypothesis-driven maneuvers by clinical concern, with special tests.</div>
+                <div style="margin-top:15px; font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:13px; letter-spacing:0.08em; color:#0073A2;">8 CONCERN GROUPS &rarr;</div>
+              </div>
+              <div onClick="{{ nav.scripts }}" style="background:#fff; border:1px solid #E4E4E5; border-radius:14px; padding:22px; cursor:pointer;" style-hover="border-color:#68357C; box-shadow:0 4px 16px rgba(0,0,0,.06); transform:translateY(-2px);">
+                <div style="width:44px; height:44px; border-radius:11px; background:#efe9f5; display:flex; align-items:center; justify-content:center; margin-bottom:15px;"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="#68357C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h11l3 3v13H5z"/><path d="M9 9h7M9 13h7M9 17h4"/></svg></div>
+                <div style="font-weight:700; font-size:18px; margin-bottom:4px;">Illness Scripts</div>
+                <div style="font-size:13.5px; line-height:1.45; color:#6f7072;">71 presenting complaints, each compared across its key differential diagnoses.</div>
+                <div style="margin-top:15px; font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:13px; letter-spacing:0.08em; color:#68357C;">71 SCRIPTS &rarr;</div>
+              </div>
+              <div onClick="{{ nav.labs }}" style="background:#fff; border:1px solid #E4E4E5; border-radius:14px; padding:22px; cursor:pointer;" style-hover="border-color:#0073A2; box-shadow:0 4px 16px rgba(0,0,0,.06); transform:translateY(-2px);">
+                <div style="width:44px; height:44px; border-radius:11px; background:#e6f0f7; display:flex; align-items:center; justify-content:center; margin-bottom:15px;"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="#0E3692" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v6l-5 9a2 2 0 0 0 2 3h10a2 2 0 0 0 2-3l-5-9V3"/></svg></div>
+                <div style="font-weight:700; font-size:18px; margin-bottom:4px;">Lab Values</div>
+                <div style="font-size:13.5px; line-height:1.45; color:#6f7072;">Reference ranges for common panels, with critical-value flags.</div>
+                <div style="margin-top:15px; font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:13px; letter-spacing:0.08em; color:#0073A2;">QUICK RANGES &rarr;</div>
+              </div>
+              <div onClick="{{ nav.algorithms }}" style="background:#fff; border:1px solid #E4E4E5; border-radius:14px; padding:22px; cursor:pointer;" style-hover="border-color:#0073A2; box-shadow:0 4px 16px rgba(0,0,0,.06); transform:translateY(-2px);">
+                <div style="width:44px; height:44px; border-radius:11px; background:#e6f0f7; display:flex; align-items:center; justify-content:center; margin-bottom:15px;"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="#0E3692" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="2.2"/><circle cx="18" cy="6" r="2.2"/><circle cx="12" cy="18" r="2.2"/><path d="M6 8.2v2a3 3 0 0 0 3 3h6a3 3 0 0 0 3-3v-2"/><path d="M12 15.4v-2"/></svg></div>
+                <div style="font-weight:700; font-size:18px; margin-bottom:4px;">Clinical Pathways</div>
+                <div style="font-size:13.5px; line-height:1.45; color:#6f7072;">Step-through decision pathways for common acute presentations.</div>
+                <div style="margin-top:15px; font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:13px; letter-spacing:0.08em; color:#0073A2;">PATHWAYS &rarr;</div>
+              </div>
+              <div onClick="{{ nav.devices }}" style="background:#fff; border:1px solid #E4E4E5; border-radius:14px; padding:22px; cursor:pointer;" style-hover="border-color:#58595B; box-shadow:0 4px 16px rgba(0,0,0,.06); transform:translateY(-2px);">
+                <div style="width:44px; height:44px; border-radius:11px; background:#eeeeef; display:flex; align-items:center; justify-content:center; margin-bottom:15px;"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="#58595B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2" width="10" height="20" rx="2.5"/><path d="M11 6h2"/></svg></div>
+                <div style="font-weight:700; font-size:18px; margin-bottom:4px;">Device Modifications</div>
+                <div style="font-size:13.5px; line-height:1.45; color:#6f7072;">How to adapt the exam for 32 devices, prostheses, and procedures.</div>
+                <div style="margin-top:15px; font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:13px; letter-spacing:0.08em; color:#58595B;">32 DEVICES &rarr;</div>
+              </div>
+            </div>
+
+            <div style="display:grid; grid-template-columns:1.3fr 1fr; gap:18px; margin-top:30px;">
+              <div style="background:#fff; border:1px solid #E4E4E5; border-radius:14px; padding:22px;">
+                <div style="font-family:'Barlow Condensed',sans-serif; letter-spacing:0.12em; text-transform:uppercase; color:#68357C; font-weight:600; font-size:12px; margin-bottom:13px;">Jump by concern</div>
+                <div style="display:flex; flex-wrap:wrap; gap:8px;">
+                  <sc-for list="{{ concernChips }}" as="c" hint-placeholder-count="8">
+                    <span onClick="{{ c.onClick }}" style="border:1.5px solid #E4E4E5; color:{{ c.color }}; font-weight:600; font-size:13.5px; padding:7px 14px; border-radius:20px; cursor:pointer;" style-hover="background:#F7F7F7; border-color:{{ c.color }};">{{ c.label }}</span>
+                  </sc-for>
+                </div>
+              </div>
+              <div style="background:#fff; border:1px solid #E4E4E5; border-radius:14px; padding:22px;">
+                <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:13px;">
+                  <div style="font-family:'Barlow Condensed',sans-serif; letter-spacing:0.12em; text-transform:uppercase; color:#58595B; font-weight:600; font-size:12px;">Your favorites</div>
+                  <span onClick="{{ nav.favorites }}" style="font-size:12.5px; color:#0073A2; font-weight:600; cursor:pointer;">View all</span>
+                </div>
+                <sc-if value="{{ favEmpty }}" hint-placeholder-val="{{ true }}">
+                  <div style="font-size:13.5px; color:#9a9b9d; line-height:1.5; padding:6px 0;">Tap the &#9734; on any maneuver, script, or device to pin it here for quick access.</div>
+                </sc-if>
+                <div style="display:flex; flex-direction:column; gap:7px;">
+                  <sc-for list="{{ favPreview }}" as="f" hint-placeholder-count="0">
+                    <div onClick="{{ f.onClick }}" style="display:flex; align-items:center; gap:9px; font-size:13.5px; color:#2b2b2d; font-weight:500; padding:7px 10px; border-radius:8px; cursor:pointer; background:#F7F7F7;" style-hover="background:#eef0f1;">
+                      <span style="width:7px; height:7px; border-radius:50%; background:{{ f.color }}; flex:none;"></span>
+                      <span style="flex:1; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{ f.label }}</span>
+                    </div>
+                  </sc-for>
+                </div>
+              </div>
+            </div>
+          </div>
+        </sc-if>
+
+        <!-- ============ CORE PE ============ -->
+        <sc-if value="{{ isCore }}" hint-placeholder-val="{{ false }}">
+          <div>
+            <div style="font-family:'Barlow Condensed',sans-serif; letter-spacing:0.14em; text-transform:uppercase; color:#68357C; font-weight:600; font-size:12px;">The universal exam</div>
+            <h1 style="font-size:32px; font-weight:700; letter-spacing:-0.02em; margin:5px 0 6px;">Core PE Skills</h1>
+            <p style="font-size:15px; line-height:1.55; color:#58595B; margin:0 0 18px; max-width:640px;">The Core maneuvers are performed reliably on every patient. Tick them off as you practice &mdash; your progress is saved on this device.</p>
+
+            <div style="display:flex; align-items:center; gap:16px; background:#fff; border:1px solid #E4E4E5; border-radius:13px; padding:16px 20px; margin-bottom:22px;">
+              <div style="font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:30px; color:#0073A2; line-height:1;">{{ coreProgress.pct }}%</div>
+              <div style="flex:1;">
+                <div style="font-weight:600; font-size:14px; margin-bottom:7px;">{{ coreProgress.done }} of {{ coreProgress.total }} core maneuvers checked</div>
+                <div style="height:8px; border-radius:5px; background:#ececed; overflow:hidden;"><div style="height:100%; width:{{ coreProgress.pct }}%; background:#0073A2; border-radius:5px;"></div></div>
+              </div>
+              <span onClick="{{ resetCore }}" style="font-size:12.5px; color:#8b8c8e; font-weight:600; cursor:pointer; border:1px solid #E4E4E5; padding:6px 12px; border-radius:7px;" style-hover="border-color:#cfd0d1;">Reset</span>
+            </div>
+
+            <div style="display:flex; flex-direction:column; gap:12px;">
+              <sc-for list="{{ coreSections }}" as="s" hint-placeholder-count="8">
+                <div style="background:#fff; border:1px solid #E4E4E5; border-radius:13px; overflow:hidden;">
+                  <div onClick="{{ s.onToggle }}" style="display:flex; align-items:center; gap:14px; padding:16px 20px; cursor:pointer;">
+                    <div style="width:30px; height:30px; border-radius:8px; background:#e6f0f7; color:#0E3692; font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:15px; display:flex; align-items:center; justify-content:center; flex:none;">{{ s.num }}</div>
+                    <div style="flex:1; font-weight:700; font-size:16.5px;">{{ s.section }}</div>
+                    <div style="font-family:'Barlow Condensed',sans-serif; font-weight:600; font-size:13px; color:{{ s.countColor }}; letter-spacing:0.04em;">{{ s.done }}/{{ s.total }}</div>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#b3b4b6" stroke-width="2.4" stroke-linecap="round" style="{{ s.chevronStyle }}"><path d="M6 9l6 6 6-6"/></svg>
+                  </div>
+                  <sc-if value="{{ s.open }}" hint-placeholder-val="{{ false }}">
+                    <div style="border-top:1px solid #eeeeef;">
+                      <sc-for list="{{ s.tasks }}" as="t" hint-placeholder-count="3">
+                        <div style="border-bottom:1px solid #f2f2f3; padding:13px 20px;">
+                          <div style="display:flex; align-items:flex-start; gap:13px;">
+                            <div onClick="{{ t.onToggleCheck }}" style="{{ t.checkboxStyle }}">
+                              <sc-if value="{{ t.checked }}" hint-placeholder-val="{{ false }}"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></sc-if>
+                            </div>
+                            <div style="flex:1; min-width:0;">
+                              <div onClick="{{ t.onToggleCrit }}" style="font-weight:600; font-size:14.5px; color:{{ t.labelColor }}; cursor:pointer; line-height:1.35;">{{ t.task }}</div>
+                              <sc-if value="{{ t.open }}" hint-placeholder-val="{{ false }}">
+                                <div style="margin-top:9px; display:flex; flex-direction:column; gap:7px;">
+                                  <div style="display:flex; gap:9px; align-items:flex-start;"><span style="font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:10.5px; letter-spacing:0.08em; color:#1F8A5B; background:#e7f6ee; padding:3px 7px; border-radius:5px; flex:none; margin-top:1px;">FULL</span><span style="font-size:13px; color:#58595B; line-height:1.5;">{{ t.full }}</span></div>
+                                  <div style="display:flex; gap:9px; align-items:flex-start;"><span style="font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:10.5px; letter-spacing:0.08em; color:#B26A00; background:#fbf0df; padding:3px 7px; border-radius:5px; flex:none; margin-top:1px;">PART</span><span style="font-size:13px; color:#58595B; line-height:1.5;">{{ t.partial }}</span></div>
+                                </div>
+                              </sc-if>
+                            </div>
+                            <span onClick="{{ t.onToggleCrit }}" style="font-size:11.5px; font-weight:600; color:#0073A2; cursor:pointer; white-space:nowrap; padding-top:2px;">{{ t.critLabel }}</span>
+                            <span onClick="{{ t.onToggleFav }}" style="cursor:pointer; flex:none; padding-top:1px;">
+                              <svg width="18" height="18" viewBox="0 0 24 24" fill="{{ t.starFill }}" stroke="{{ t.starStroke }}" stroke-width="2" stroke-linejoin="round"><path d="M12 4l2.4 5.4 5.6.5-4.2 3.7 1.3 5.5L12 16.8 6.9 19.6l1.3-5.5L4 10.4l5.6-.5z"/></svg>
+                            </span>
+                          </div>
+                        </div>
+                      </sc-for>
+                    </div>
+                  </sc-if>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </sc-if>
+
+        <!-- ============ CLUSTERS LIST ============ -->
+        <sc-if value="{{ isClusters }}" hint-placeholder-val="{{ false }}">
+          <div>
+            <div style="font-family:'Barlow Condensed',sans-serif; letter-spacing:0.14em; text-transform:uppercase; color:#68357C; font-weight:600; font-size:12px;">Hypothesis-driven exams</div>
+            <h1 style="font-size:32px; font-weight:700; letter-spacing:-0.02em; margin:5px 0 6px;">Cluster Exams</h1>
+            <p style="font-size:15px; line-height:1.55; color:#58595B; margin:0 0 22px; max-width:640px;">Added selectively when a patient's symptoms point toward a focused inquiry. Choose a clinical concern to see its core baseline plus the cluster-specific maneuvers.</p>
+            <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(252px, 1fr)); gap:16px;">
+              <sc-for list="{{ clusters }}" as="c" hint-placeholder-count="8">
+                <div onClick="{{ c.onOpen }}" style="background:#fff; border:1px solid #E4E4E5; border-radius:14px; overflow:hidden; cursor:pointer;" style-hover="box-shadow:0 6px 20px rgba(0,0,0,.08); transform:translateY(-2px);">
+                  <div style="height:6px; background:{{ c.color }};"></div>
+                  <div style="padding:20px;">
+                    <div style="display:flex; align-items:center; gap:11px; margin-bottom:12px;">
+                      <div style="width:40px; height:40px; border-radius:10px; background:{{ c.tint }}; color:{{ c.color }}; display:flex; align-items:center; justify-content:center; font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:17px; flex:none;">{{ c.initials }}</div>
+                      <div style="font-weight:700; font-size:18px;">{{ c.name }}</div>
+                    </div>
+                    <div style="font-size:13px; line-height:1.5; color:#6f7072; margin-bottom:14px; display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden;">{{ c.blurb }}</div>
+                    <div style="display:flex; gap:16px; font-family:'Barlow Condensed',sans-serif; font-weight:600; font-size:12.5px; letter-spacing:0.04em; color:#8b8c8e;">
+                      <span>{{ c.presCount }} PRESENTATIONS</span>
+                      <span style="color:{{ c.color }};">{{ c.taskCount }} MANEUVERS</span>
+                    </div>
+                  </div>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </sc-if>
+
+        <!-- ============ CLUSTER DETAIL ============ -->
+        <sc-if value="{{ isClusterDetail }}" hint-placeholder-val="{{ false }}">
+          <div>
+            <span onClick="{{ nav.clusters }}" style="display:inline-flex; align-items:center; gap:6px; font-size:13px; font-weight:600; color:#8b8c8e; cursor:pointer; margin-bottom:16px;" style-hover="color:#0073A2;">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M15 6l-6 6 6 6"/></svg> All clusters
+            </span>
+            <div style="display:flex; align-items:center; gap:14px; margin-bottom:8px;">
+              <div style="width:14px; height:36px; border-radius:5px; background:{{ ac.color }};"></div>
+              <h1 style="font-size:32px; font-weight:700; letter-spacing:-0.02em; margin:0;">{{ ac.name }}</h1>
+            </div>
+            <p style="font-size:15px; line-height:1.6; color:#58595B; margin:0 0 22px; max-width:680px;">{{ ac.blurb }}</p>
+
+            <div style="margin-bottom:24px;">
+              <div style="font-family:'Barlow Condensed',sans-serif; letter-spacing:0.12em; text-transform:uppercase; color:#68357C; font-weight:600; font-size:12px; margin-bottom:11px;">Presents as</div>
+              <div style="display:flex; flex-wrap:wrap; gap:8px;">
+                <sc-for list="{{ ac.presentations }}" as="p" hint-placeholder-count="4">
+                  <span style="background:#fff; border:1.5px solid #E4E4E5; color:#2b2b2d; font-weight:500; font-size:13.5px; padding:7px 14px; border-radius:20px;">{{ p }}</span>
+                </sc-for>
+              </div>
+            </div>
+
+            <div style="background:#fff; border:1px solid #E4E4E5; border-radius:14px; padding:20px; margin-bottom:18px;">
+              <div style="font-family:'Barlow Condensed',sans-serif; letter-spacing:0.12em; text-transform:uppercase; color:#0E3692; font-weight:600; font-size:12px; margin-bottom:13px;">Core PE baseline</div>
+              <div style="display:flex; flex-wrap:wrap; gap:8px;">
+                <sc-for list="{{ ac.coreTasks }}" as="ct" hint-placeholder-count="6">
+                  <span style="background:#f3f8fc; border:1px solid #cfe0ef; color:#0E3692; font-weight:500; font-size:13px; padding:6px 12px; border-radius:8px;">{{ ct }}</span>
+                </sc-for>
+              </div>
+            </div>
+
+            <div style="font-family:'Barlow Condensed',sans-serif; letter-spacing:0.12em; text-transform:uppercase; color:#58595B; font-weight:600; font-size:12px; margin:24px 0 12px;">Cluster maneuvers</div>
+            <div style="background:#fff; border:1px solid #E4E4E5; border-radius:14px; overflow:hidden; margin-bottom:18px;">
+              <sc-for list="{{ ac.clusterTasks }}" as="t" hint-placeholder-count="4">
+                <div style="border-bottom:1px solid #f2f2f3; padding:14px 20px;">
+                  <div style="display:flex; align-items:flex-start; gap:13px;">
+                    <div onClick="{{ t.onToggleCheck }}" style="{{ t.checkboxStyle }}">
+                      <sc-if value="{{ t.checked }}" hint-placeholder-val="{{ false }}"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></sc-if>
+                    </div>
+                    <div style="flex:1; min-width:0;">
+                      <div onClick="{{ t.onToggleCrit }}" style="font-weight:600; font-size:14.5px; color:{{ t.labelColor }}; cursor:pointer; line-height:1.35;">{{ t.task }}</div>
+                      <sc-if value="{{ t.open }}" hint-placeholder-val="{{ false }}">
+                        <div style="margin-top:9px; display:flex; flex-direction:column; gap:7px;">
+                          <div style="display:flex; gap:9px; align-items:flex-start;"><span style="font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:10.5px; letter-spacing:0.08em; color:#1F8A5B; background:#e7f6ee; padding:3px 7px; border-radius:5px; flex:none; margin-top:1px;">FULL</span><span style="font-size:13px; color:#58595B; line-height:1.5;">{{ t.full }}</span></div>
+                          <div style="display:flex; gap:9px; align-items:flex-start;"><span style="font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:10.5px; letter-spacing:0.08em; color:#B26A00; background:#fbf0df; padding:3px 7px; border-radius:5px; flex:none; margin-top:1px;">PART</span><span style="font-size:13px; color:#58595B; line-height:1.5;">{{ t.partial }}</span></div>
+                        </div>
+                      </sc-if>
+                    </div>
+                    <span onClick="{{ t.onToggleCrit }}" style="font-size:11.5px; font-weight:600; color:#0073A2; cursor:pointer; white-space:nowrap; padding-top:2px;">{{ t.critLabel }}</span>
+                    <span onClick="{{ t.onToggleFav }}" style="cursor:pointer; flex:none; padding-top:1px;">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="{{ t.starFill }}" stroke="{{ t.starStroke }}" stroke-width="2" stroke-linejoin="round"><path d="M12 4l2.4 5.4 5.6.5-4.2 3.7 1.3 5.5L12 16.8 6.9 19.6l1.3-5.5L4 10.4l5.6-.5z"/></svg>
+                    </span>
+                  </div>
+                </div>
+              </sc-for>
+            </div>
+
+            <sc-if value="{{ ac.hasAddOns }}" hint-placeholder-val="{{ false }}">
+              <div>
+                <div style="font-family:'Barlow Condensed',sans-serif; letter-spacing:0.12em; text-transform:uppercase; color:#58595B; font-weight:600; font-size:12px; margin:24px 0 12px;">Optional add-ons</div>
+                <div style="background:#fff; border:1px solid #E4E4E5; border-radius:14px; overflow:hidden;">
+                  <sc-for list="{{ ac.addOns }}" as="t" hint-placeholder-count="3">
+                    <div style="border-bottom:1px solid #f2f2f3; padding:14px 20px;">
+                      <div style="display:flex; align-items:flex-start; gap:13px;">
+                        <div onClick="{{ t.onToggleCheck }}" style="{{ t.checkboxStyle }}">
+                          <sc-if value="{{ t.checked }}" hint-placeholder-val="{{ false }}"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></sc-if>
+                        </div>
+                        <div style="flex:1; min-width:0;">
+                          <div onClick="{{ t.onToggleCrit }}" style="font-weight:600; font-size:14.5px; color:{{ t.labelColor }}; cursor:pointer; line-height:1.35;">{{ t.task }}</div>
+                          <sc-if value="{{ t.open }}" hint-placeholder-val="{{ false }}">
+                            <div style="margin-top:9px; display:flex; flex-direction:column; gap:7px;">
+                              <div style="display:flex; gap:9px; align-items:flex-start;"><span style="font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:10.5px; letter-spacing:0.08em; color:#1F8A5B; background:#e7f6ee; padding:3px 7px; border-radius:5px; flex:none; margin-top:1px;">FULL</span><span style="font-size:13px; color:#58595B; line-height:1.5;">{{ t.full }}</span></div>
+                              <div style="display:flex; gap:9px; align-items:flex-start;"><span style="font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:10.5px; letter-spacing:0.08em; color:#B26A00; background:#fbf0df; padding:3px 7px; border-radius:5px; flex:none; margin-top:1px;">PART</span><span style="font-size:13px; color:#58595B; line-height:1.5;">{{ t.partial }}</span></div>
+                            </div>
+                          </sc-if>
+                        </div>
+                        <span onClick="{{ t.onToggleCrit }}" style="font-size:11.5px; font-weight:600; color:#0073A2; cursor:pointer; white-space:nowrap; padding-top:2px;">{{ t.critLabel }}</span>
+                        <span onClick="{{ t.onToggleFav }}" style="cursor:pointer; flex:none; padding-top:1px;">
+                          <svg width="18" height="18" viewBox="0 0 24 24" fill="{{ t.starFill }}" stroke="{{ t.starStroke }}" stroke-width="2" stroke-linejoin="round"><path d="M12 4l2.4 5.4 5.6.5-4.2 3.7 1.3 5.5L12 16.8 6.9 19.6l1.3-5.5L4 10.4l5.6-.5z"/></svg>
+                        </span>
+                      </div>
+                    </div>
+                  </sc-for>
+                </div>
+              </div>
+            </sc-if>
+          </div>
+        </sc-if>
+
+        <!-- ============ ILLNESS SCRIPTS (LIST) ============ -->
+        <sc-if value="{{ isScripts }}" hint-placeholder-val="{{ false }}">
+          <div>
+            <div style="font-family:'Barlow Condensed',sans-serif; letter-spacing:0.14em; text-transform:uppercase; color:#68357C; font-weight:600; font-size:12px;">Appendix A</div>
+            <h1 style="font-size:32px; font-weight:700; letter-spacing:-0.02em; margin:5px 0 6px;">Illness Scripts</h1>
+            <p style="font-size:15px; line-height:1.55; color:#58595B; margin:0 0 18px; max-width:660px;">{{ scriptTotal }} presenting complaints, each with its key differential diagnoses compared across symptoms, pathophysiology, epidemiology, timing, signs, diagnostics, and treatment. Tap any to open its full script.</p>
+            <div style="display:flex; flex-wrap:wrap; gap:8px; margin-bottom:24px;">
+              <sc-for list="{{ scriptFilters }}" as="f" hint-placeholder-count="9">
+                <span onClick="{{ f.onClick }}" style="{{ f.style }}">{{ f.label }}</span>
+              </sc-for>
+            </div>
+            <sc-if value="{{ scriptEmpty }}" hint-placeholder-val="{{ false }}">
+              <div style="padding:36px; text-align:center; color:#8b8c8e; background:#fff; border:1px solid #E4E4E5; border-radius:14px;">No scripts in this system.</div>
+            </sc-if>
+            <div style="display:flex; flex-direction:column; gap:22px;">
+              <sc-for list="{{ scriptGroups }}" as="g" hint-placeholder-count="6">
+                <div>
+                  <div style="font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:18px; color:#0073A2; margin-bottom:10px; border-bottom:2px solid #E4E4E5; padding-bottom:6px;">{{ g.letter }}</div>
+                  <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(320px, 1fr)); gap:9px;">
+                    <sc-for list="{{ g.items }}" as="it" hint-placeholder-count="3">
+                      <div onClick="{{ it.onOpen }}" style="display:flex; align-items:center; gap:11px; background:#fff; border:1px solid #E4E4E5; border-radius:11px; padding:13px 15px; cursor:pointer;" style-hover="border-color:#68357C; box-shadow:0 2px 10px rgba(0,0,0,.05);">
+                        <span onClick="{{ it.onToggleFav }}" style="cursor:pointer; flex:none;">
+                          <svg width="17" height="17" viewBox="0 0 24 24" fill="{{ it.starFill }}" stroke="{{ it.starStroke }}" stroke-width="2" stroke-linejoin="round"><path d="M12 4l2.4 5.4 5.6.5-4.2 3.7 1.3 5.5L12 16.8 6.9 19.6l1.3-5.5L4 10.4l5.6-.5z"/></svg>
+                        </span>
+                        <div style="flex:1; min-width:0;">
+                          <div style="font-weight:600; font-size:14.5px; line-height:1.25;">{{ it.name }}</div>
+                          <div style="font-size:12px; color:#9a9b9d; margin-top:1px;">{{ it.ddxCount }} differentials</div>
+                        </div>
+                        <span style="font-family:'Barlow Condensed',sans-serif; font-weight:600; font-size:10.5px; letter-spacing:0.06em; text-transform:uppercase; color:#fff; background:{{ it.color }}; padding:4px 8px; border-radius:5px; white-space:nowrap; flex:none;">{{ it.systemLabel }}</span>
+                      </div>
+                    </sc-for>
+                  </div>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </sc-if>
+
+        <!-- ============ ILLNESS SCRIPT DETAIL ============ -->
+        <sc-if value="{{ isScriptDetail }}" hint-placeholder-val="{{ false }}">
+          <div>
+            <span onClick="{{ nav.scripts }}" style="display:inline-flex; align-items:center; gap:6px; font-size:13px; font-weight:600; color:#8b8c8e; cursor:pointer; margin-bottom:16px;" style-hover="color:#68357C;">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M15 6l-6 6 6 6"/></svg> All illness scripts
+            </span>
+            <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:16px; margin-bottom:6px;">
+              <div style="display:flex; align-items:center; gap:13px;">
+                <div style="width:13px; height:34px; border-radius:5px; background:{{ asd.color }}; flex:none;"></div>
+                <h1 style="font-size:30px; font-weight:700; letter-spacing:-0.02em; margin:0;">{{ asd.title }}</h1>
+              </div>
+              <span onClick="{{ asd.onToggleFav }}" style="cursor:pointer; flex:none; margin-top:6px;">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="{{ asd.starFill }}" stroke="{{ asd.starStroke }}" stroke-width="2" stroke-linejoin="round"><path d="M12 4l2.4 5.4 5.6.5-4.2 3.7 1.3 5.5L12 16.8 6.9 19.6l1.3-5.5L4 10.4l5.6-.5z"/></svg>
+              </span>
+            </div>
+            <div style="display:flex; align-items:center; gap:10px; margin-bottom:20px; flex-wrap:wrap;">
+              <span style="font-family:'Barlow Condensed',sans-serif; font-weight:600; font-size:11px; letter-spacing:0.06em; text-transform:uppercase; color:#fff; background:{{ asd.color }}; padding:4px 10px; border-radius:5px;">{{ asd.systemLabel }}</span>
+              <span style="font-size:13.5px; color:#8b8c8e;">{{ asd.ddxCount }} differential diagnoses</span>
+              <span onClick="{{ asd.onOpenCluster }}" style="font-size:13px; font-weight:600; color:#0073A2; cursor:pointer;">View {{ asd.systemLabel }} cluster exam &rarr;</span>
+            </div>
+
+            <!-- desktop comparison table -->
+            <div style="{{ asd.tableWrapStyle }}">
+              <div style="background:#fff; border:1px solid #E4E4E5; border-radius:14px; overflow:hidden;">
+                <div style="overflow-x:auto;">
+                  <table style="border-collapse:collapse; width:100%; min-width:{{ asd.tableMinWidth }};">
+                    <thead>
+                      <tr>
+                        <th style="position:sticky; left:0; z-index:2; background:#58595B; color:#fff; text-align:left; font-size:11px; font-family:'Barlow Condensed',sans-serif; letter-spacing:0.1em; text-transform:uppercase; padding:14px 16px; width:140px; vertical-align:bottom;">Dimension</th>
+                        <sc-for list="{{ asd.ddx }}" as="d" hint-placeholder-count="4">
+                          <th style="background:{{ asd.color }}; color:#fff; text-align:left; font-size:14px; font-weight:700; padding:14px 16px; vertical-align:top; border-left:1px solid rgba(255,255,255,.18); min-width:200px;">{{ d.name }}</th>
+                        </sc-for>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <sc-for list="{{ asd.rows }}" as="r" hint-placeholder-count="7">
+                        <tr style="{{ r.rowStyle }}">
+                          <td style="position:sticky; left:0; z-index:1; background:{{ r.labelBg }}; font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:11.5px; letter-spacing:0.06em; text-transform:uppercase; color:#0E3692; padding:13px 16px; vertical-align:top; white-space:nowrap; border-right:1px solid #E4E4E5;">{{ r.label }}</td>
+                          <sc-for list="{{ r.cells }}" as="c" hint-placeholder-count="4">
+                            <td style="font-size:13px; line-height:1.5; color:#444; padding:13px 16px; vertical-align:top; border-left:1px solid #f0f0f1;">{{ c }}</td>
+                          </sc-for>
+                        </tr>
+                      </sc-for>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <!-- mobile stacked cards -->
+            <div style="{{ asd.cardsWrapStyle }}">
+              <sc-for list="{{ asd.ddx }}" as="d" hint-placeholder-count="4">
+                <div style="background:#fff; border:1px solid #E4E4E5; border-radius:14px; overflow:hidden; margin-bottom:14px;">
+                  <div style="background:{{ asd.color }}; color:#fff; font-weight:700; font-size:16px; padding:14px 18px;">{{ d.name }}</div>
+                  <div style="padding:6px 18px 12px;">
+                    <sc-for list="{{ d.fields }}" as="f" hint-placeholder-count="7">
+                      <div style="padding:11px 0; border-bottom:1px solid #f2f2f3;">
+                        <div style="font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:10.5px; letter-spacing:0.08em; text-transform:uppercase; color:#0E3692; margin-bottom:3px;">{{ f.label }}</div>
+                        <div style="font-size:13.5px; line-height:1.5; color:#444;">{{ f.value }}</div>
+                      </div>
+                    </sc-for>
+                  </div>
+                </div>
+              </sc-for>
+            </div>
+
+            <div style="font-size:12px; color:#9a9b9d; font-style:italic; line-height:1.5; margin-top:18px; max-width:640px;">These scripts support your diagnostic reasoning and should complement &mdash; not replace &mdash; clinical judgment and individualized care. From the author's book, Appendix A.</div>
+          </div>
+        </sc-if>
+
+        <!-- ============ LAB VALUES ============ -->
+        <sc-if value="{{ isLabs }}" hint-placeholder-val="{{ false }}">
+          <div>
+            <div style="font-family:'Barlow Condensed',sans-serif; letter-spacing:0.14em; text-transform:uppercase; color:#68357C; font-weight:600; font-size:12px;">Quick reference</div>
+            <h1 style="font-size:32px; font-weight:700; letter-spacing:-0.02em; margin:5px 0 6px;">Lab Values</h1>
+            <p style="font-size:14px; line-height:1.55; color:#8b8c8e; margin:0 0 22px; max-width:640px; font-style:italic;">Supplementary reference ranges for study &mdash; not from your source documents. Ranges vary by laboratory; always use your institution's reference values.</p>
+            <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(320px, 1fr)); gap:16px;">
+              <sc-for list="{{ labs }}" as="p" hint-placeholder-count="6">
+                <div style="background:#fff; border:1px solid #E4E4E5; border-radius:14px; overflow:hidden;">
+                  <div style="background:#58595B; color:#fff; font-weight:700; font-size:14.5px; padding:13px 18px;">{{ p.panel }}</div>
+                  <div>
+                    <sc-for list="{{ p.tests }}" as="t" hint-placeholder-count="5">
+                      <div style="display:flex; align-items:center; gap:12px; padding:10px 18px; border-bottom:1px solid #f2f2f3;">
+                        <span style="flex:1; font-size:13.5px; font-weight:500; color:#2b2b2d;">{{ t.name }}</span>
+                        <span style="font-family:'Barlow Condensed',sans-serif; font-weight:600; font-size:14px; color:#0E3692; white-space:nowrap;">{{ t.range }}</span>
+                        <span style="font-size:11.5px; color:#9a9b9d; min-width:54px; text-align:right;">{{ t.units }}</span>
+                      </div>
+                      <sc-if value="{{ t.hasCrit }}" hint-placeholder-val="{{ false }}">
+                        <div style="padding:0 18px 9px 18px; margin-top:-1px;"><span style="font-size:11.5px; color:#EE2915; font-weight:600;">! {{ t.critical }}</span></div>
+                      </sc-if>
+                    </sc-for>
+                  </div>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </sc-if>
+
+        <!-- ============ CLINICAL PATHWAYS ============ -->
+        <sc-if value="{{ isAlgos }}" hint-placeholder-val="{{ false }}">
+          <div>
+            <div style="font-family:'Barlow Condensed',sans-serif; letter-spacing:0.14em; text-transform:uppercase; color:#68357C; font-weight:600; font-size:12px;">Decision support</div>
+            <h1 style="font-size:32px; font-weight:700; letter-spacing:-0.02em; margin:5px 0 6px;">Clinical Pathways</h1>
+            <p style="font-size:14px; line-height:1.55; color:#8b8c8e; margin:0 0 22px; max-width:660px; font-style:italic;">Supplementary teaching algorithms for common acute presentations &mdash; not from your source documents. Always follow local protocols and clinical judgment.</p>
+            <div style="display:flex; flex-direction:column; gap:16px;">
+              <sc-for list="{{ algos }}" as="a" hint-placeholder-count="4">
+                <div style="background:#fff; border:1px solid #E4E4E5; border-radius:14px; overflow:hidden;">
+                  <div style="height:5px; background:{{ a.color }};"></div>
+                  <div style="padding:20px 22px;">
+                    <div style="display:flex; align-items:center; gap:10px; margin-bottom:5px;">
+                      <h2 style="font-size:20px; font-weight:700; margin:0;">{{ a.name }}</h2>
+                      <span style="font-family:'Barlow Condensed',sans-serif; font-weight:600; font-size:10.5px; letter-spacing:0.06em; text-transform:uppercase; color:#fff; background:{{ a.color }}; padding:3px 9px; border-radius:5px;">{{ a.systemLabel }}</span>
+                    </div>
+                    <p style="font-size:14px; color:#6f7072; line-height:1.5; margin:0 0 16px; max-width:640px;">{{ a.summary }}</p>
+                    <div style="display:flex; flex-direction:column;">
+                      <sc-for list="{{ a.steps }}" as="st" hint-placeholder-count="5">
+                        <div style="display:flex; gap:14px; align-items:flex-start; padding-bottom:14px;">
+                          <div style="display:flex; flex-direction:column; align-items:center; flex:none;">
+                            <div style="width:26px; height:26px; border-radius:50%; background:{{ a.color }}; color:#fff; font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:13px; display:flex; align-items:center; justify-content:center;">{{ st.num }}</div>
+                            <div style="{{ st.lineStyle }}"></div>
+                          </div>
+                          <div style="padding-top:2px;">
+                            <div style="font-weight:700; font-size:14.5px; color:#2b2b2d;">{{ st.step }}</div>
+                            <div style="font-size:13.5px; color:#58595B; line-height:1.5; margin-top:2px;">{{ st.detail }}</div>
+                          </div>
+                        </div>
+                      </sc-for>
+                    </div>
+                  </div>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </sc-if>
+
+        <!-- ============ DEVICE MODS ============ -->
+        <sc-if value="{{ isDevices }}" hint-placeholder-val="{{ false }}">
+          <div>
+            <div style="font-family:'Barlow Condensed',sans-serif; letter-spacing:0.14em; text-transform:uppercase; color:#68357C; font-weight:600; font-size:12px;">Adapting the exam</div>
+            <h1 style="font-size:32px; font-weight:700; letter-spacing:-0.02em; margin:5px 0 6px;">Device Modifications</h1>
+            <p style="font-size:15px; line-height:1.55; color:#58595B; margin:0 0 18px; max-width:660px;">How to modify the physical exam in the presence of 32 medical devices, prostheses, and procedures. Tap a device to see specific modifications.</p>
+            <div style="display:flex; flex-wrap:wrap; gap:8px; margin-bottom:24px;">
+              <sc-for list="{{ deviceFilters }}" as="f" hint-placeholder-count="6">
+                <span onClick="{{ f.onClick }}" style="{{ f.style }}">{{ f.label }}</span>
+              </sc-for>
+            </div>
+            <div style="display:flex; flex-direction:column; gap:10px;">
+              <sc-for list="{{ devices }}" as="d" hint-placeholder-count="6">
+                <div style="background:#fff; border:1px solid #E4E4E5; border-radius:13px; overflow:hidden;">
+                  <div onClick="{{ d.onToggle }}" style="display:flex; align-items:center; gap:13px; padding:15px 20px; cursor:pointer;">
+                    <div style="width:38px; height:38px; border-radius:10px; background:#eeeeef; color:#58595B; display:flex; align-items:center; justify-content:center; flex:none;">
+                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2" width="10" height="20" rx="2.5"/><path d="M11 6h2"/></svg>
+                    </div>
+                    <div style="flex:1; min-width:0;">
+                      <div style="font-weight:700; font-size:15.5px;">{{ d.name }}</div>
+                      <div style="font-size:12.5px; color:#9a9b9d; font-weight:600; font-family:'Barlow Condensed',sans-serif; letter-spacing:0.06em; text-transform:uppercase;">{{ d.category }}</div>
+                    </div>
+                    <span onClick="{{ d.onToggleFav }}" style="cursor:pointer; flex:none;">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="{{ d.starFill }}" stroke="{{ d.starStroke }}" stroke-width="2" stroke-linejoin="round"><path d="M12 4l2.4 5.4 5.6.5-4.2 3.7 1.3 5.5L12 16.8 6.9 19.6l1.3-5.5L4 10.4l5.6-.5z"/></svg>
+                    </span>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#b3b4b6" stroke-width="2.4" stroke-linecap="round" style="{{ d.chevronStyle }}"><path d="M6 9l6 6 6-6"/></svg>
+                  </div>
+                  <sc-if value="{{ d.open }}" hint-placeholder-val="{{ false }}">
+                    <div style="border-top:1px solid #eeeeef; padding:18px 20px;">
+                      <!-- TOP HALF -->
+                      <sc-if value="{{ d.hasImgs }}" hint-placeholder-val="{{ false }}">
+                        <div style="display:grid; grid-template-columns:1fr 1fr; gap:18px; margin-bottom:18px; align-items:stretch;">
+                          <div style="position:relative; background:#F7F7F7; border:1px solid #E4E4E5; border-radius:10px; overflow:hidden;">
+                            <div style="position:absolute; inset:0; display:flex; flex-direction:column; gap:8px;">
+                              <sc-for list="{{ d.imgs }}" as="im" hint-placeholder-count="1">
+                                <img src="{{ im.src }}" alt="{{ im.alt }}" style="display:block; flex:1; min-height:0; width:100%; object-fit:contain;" />
+                              </sc-for>
+                            </div>
+                          </div>
+                          <div style="display:flex; flex-direction:column; gap:14px;">
+                            <div><div style="font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:10.5px; letter-spacing:0.1em; text-transform:uppercase; color:#0073A2; margin-bottom:3px;">Device</div><div style="font-size:13px; color:#58595B; line-height:1.45;">{{ d.device }}</div></div>
+                            <div><div style="font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:10.5px; letter-spacing:0.1em; text-transform:uppercase; color:#0073A2; margin-bottom:3px;">Indication</div><div style="font-size:13px; color:#58595B; line-height:1.45;">{{ d.indication }}</div></div>
+                            <div><div style="font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:10.5px; letter-spacing:0.1em; text-transform:uppercase; color:#0073A2; margin-bottom:3px;">Location</div><div style="font-size:13px; color:#58595B; line-height:1.45;">{{ d.location }}</div></div>
+                          </div>
+                        </div>
+                      </sc-if>
+                      <sc-if value="{{ d.noImgs }}" hint-placeholder-val="{{ false }}">
+                        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(180px, 1fr)); gap:14px; margin-bottom:18px;">
+                          <div><div style="font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:10.5px; letter-spacing:0.1em; text-transform:uppercase; color:#0073A2; margin-bottom:3px;">Device</div><div style="font-size:13px; color:#58595B; line-height:1.45;">{{ d.device }}</div></div>
+                          <div><div style="font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:10.5px; letter-spacing:0.1em; text-transform:uppercase; color:#0073A2; margin-bottom:3px;">Indication</div><div style="font-size:13px; color:#58595B; line-height:1.45;">{{ d.indication }}</div></div>
+                          <div><div style="font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:10.5px; letter-spacing:0.1em; text-transform:uppercase; color:#0073A2; margin-bottom:3px;">Location</div><div style="font-size:13px; color:#58595B; line-height:1.45;">{{ d.location }}</div></div>
+                        </div>
+                      </sc-if>
+                      <!-- BOTTOM HALF -->
+                      <div style="border-top:1px solid #eeeeef; padding-top:16px; font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:10.5px; letter-spacing:0.1em; text-transform:uppercase; color:#68357C; margin-bottom:9px;">Modification to the PE</div>
+                      <div style="display:flex; flex-direction:column; gap:8px;">
+                        <sc-for list="{{ d.mods }}" as="m" hint-placeholder-count="4">
+                          <div style="display:flex; gap:10px; align-items:flex-start;">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1F8A5B" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" style="flex:none; margin-top:1px;"><path d="M5 13l4 4L19 7"/></svg>
+                            <span style="font-size:13.5px; color:#444; line-height:1.5;">{{ m }}</span>
+                          </div>
+                        </sc-for>
+                      </div>
+                    </div>
+                  </sc-if>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </sc-if>
+
+        <!-- ============ ABBREVIATIONS ============ -->
+        <sc-if value="{{ isAbbrev }}" hint-placeholder-val="{{ false }}">
+          <div>
+            <div style="font-family:'Barlow Condensed',sans-serif; letter-spacing:0.14em; text-transform:uppercase; color:#68357C; font-weight:600; font-size:12px;">Quick lookup</div>
+            <h1 style="font-size:32px; font-weight:700; letter-spacing:-0.02em; margin:5px 0 14px;">Abbreviations</h1>
+            <div style="max-width:420px; display:flex; align-items:center; gap:10px; background:#fff; border:1.5px solid #E4E4E5; border-radius:10px; padding:9px 14px; margin-bottom:22px;">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#0073A2" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+              <input value="{{ abbrevQ }}" onInput="{{ onAbbrevSearch }}" placeholder="Filter abbreviations…" style="border:none; background:transparent; flex:1; font-family:inherit; font-size:14.5px;" />
+            </div>
+            <div style="background:#fff; border:1px solid #E4E4E5; border-radius:14px; overflow:hidden; columns:2; column-gap:0;">
+              <sc-for list="{{ abbrevList }}" as="a" hint-placeholder-count="12">
+                <div style="display:flex; gap:12px; padding:9px 18px; border-bottom:1px solid #f4f4f5; break-inside:avoid;">
+                  <span style="font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:13.5px; color:#0E3692; min-width:64px;">{{ a.abbr }}</span>
+                  <span style="font-size:13px; color:#58595B; line-height:1.4;">{{ a.meaning }}</span>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </sc-if>
+
+        <!-- ============ FAVORITES ============ -->
+        <sc-if value="{{ isFav }}" hint-placeholder-val="{{ false }}">
+          <div>
+            <div style="font-family:'Barlow Condensed',sans-serif; letter-spacing:0.14em; text-transform:uppercase; color:#68357C; font-weight:600; font-size:12px;">Pinned for quick access</div>
+            <h1 style="font-size:32px; font-weight:700; letter-spacing:-0.02em; margin:5px 0 18px;">Favorites</h1>
+            <sc-if value="{{ favEmpty }}" hint-placeholder-val="{{ true }}">
+              <div style="padding:50px 30px; text-align:center; background:#fff; border:1px dashed #d4d5d6; border-radius:16px;">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#cfd0d1" stroke-width="1.8" stroke-linejoin="round" style="margin-bottom:12px;"><path d="M12 4l2.4 5.4 5.6.5-4.2 3.7 1.3 5.5L12 16.8 6.9 19.6l1.3-5.5L4 10.4l5.6-.5z"/></svg>
+                <div style="font-weight:600; font-size:16px; color:#58595B;">No favorites yet</div>
+                <div style="font-size:14px; color:#9a9b9d; margin-top:5px;">Tap the &#9734; on any maneuver, illness script, or device to pin it here.</div>
+              </div>
+            </sc-if>
+            <div style="display:flex; flex-direction:column; gap:9px;">
+              <sc-for list="{{ favList }}" as="f" hint-placeholder-count="0">
+                <div style="display:flex; align-items:center; gap:14px; padding:14px 18px; background:#fff; border:1px solid #E4E4E5; border-radius:11px;">
+                  <span style="font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:#fff; background:{{ f.color }}; padding:4px 9px; border-radius:5px; flex:none;">{{ f.kind }}</span>
+                  <span onClick="{{ f.onClick }}" style="flex:1; font-weight:600; font-size:15px; cursor:pointer; min-width:0;">{{ f.label }}</span>
+                  <span onClick="{{ f.onRemove }}" style="cursor:pointer; flex:none;">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="#68357C" stroke="#68357C" stroke-width="2" stroke-linejoin="round"><path d="M12 4l2.4 5.4 5.6.5-4.2 3.7 1.3 5.5L12 16.8 6.9 19.6l1.3-5.5L4 10.4l5.6-.5z"/></svg>
+                  </span>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </sc-if>
+
+        <!-- ============ ACKNOWLEDGEMENT ============ -->
+        <sc-if value="{{ isAck }}" hint-placeholder-val="{{ false }}">
+          <div style="max-width:680px;">
+            <div style="font-family:'Barlow Condensed',sans-serif; letter-spacing:0.14em; text-transform:uppercase; color:#68357C; font-weight:600; font-size:12px;">With gratitude</div>
+            <h1 style="font-size:32px; font-weight:700; letter-spacing:-0.02em; margin:5px 0 20px;">Acknowledgement</h1>
+
+            <div style="background:#fff; border:1px solid #E4E4E5; border-radius:16px; overflow:hidden; margin-bottom:20px;">
+              <div style="height:7px; background:#0073A2;"></div>
+              <div style="padding:28px 30px;">
+                <div style="display:flex; gap:22px; align-items:flex-start; margin-bottom:20px; flex-wrap:wrap;">
+                  <img src="./assets/bates-cover.png" alt="Bates' Pocket Guide to Physical Examination and History Taking, 10th edition" style="width:128px; height:auto; border-radius:6px; box-shadow:0 6px 18px rgba(0,0,0,.16); flex:none;" />
+                  <div style="flex:1; min-width:240px;">
+                    <div style="font-family:'Barlow Condensed',sans-serif; letter-spacing:0.12em; text-transform:uppercase; color:#0073A2; font-weight:600; font-size:12px; margin-bottom:6px;">Source text</div>
+                    <div style="font-weight:700; font-size:21px; line-height:1.2; letter-spacing:-0.01em; margin-bottom:14px;">Bates&rsquo; Pocket Guide to Physical Examination and History Taking</div>
+                    <div style="display:flex; align-items:center; gap:12px; margin-bottom:14px;">
+                      <img src="./assets/soriano.jpg" alt="Rainier P. Soriano, MD" style="width:48px; height:48px; border-radius:50%; object-fit:cover; flex:none;" />
+                      <div style="line-height:1.25;">
+                        <div style="font-weight:700; font-size:15px;">Rainier P. Soriano, MD</div>
+                        <div style="font-size:13px; color:#8b8c8e;">Lead author</div>
+                      </div>
+                    </div>
+                    <div style="font-size:13.5px; color:#58595B; line-height:1.6; border-left:3px solid #E4E4E5; padding-left:14px;">Soriano, Rainier P., et al. <em>Bates&rsquo; Pocket Guide to Physical Examination and History Taking.</em> 10th ed., Wolters Kluwer, 2026.</div>
+                  </div>
+                </div>
+                <p style="font-size:15px; line-height:1.65; color:#444; margin:0;">All of the physical examination skills, illness scripts, examination modifications, and abbreviations presented here are drawn from this text. This dashboard simply makes that material searchable and easy to study at the bedside. Full credit for the content, organization, and clinical descriptions belongs to the authors.</p>
+              </div>
+            </div>
+
+            <div style="background:#fff; border:1px solid #E4E4E5; border-radius:16px; padding:24px 28px;">
+              <div style="font-family:'Barlow Condensed',sans-serif; letter-spacing:0.12em; text-transform:uppercase; color:#58595B; font-weight:600; font-size:12px; margin-bottom:12px;">Framework &amp; sources cited within the text</div>
+              <p style="font-size:14.5px; line-height:1.65; color:#444; margin:0 0 12px;">The Core + Cluster physical examination framework harmonizes two strands of scholarship referenced in the source material:</p>
+              <ul style="margin:0; padding-left:20px; font-size:14px; line-height:1.7; color:#58595B;">
+                <li>The national consensus &ldquo;core&rdquo; maneuvers described by <strong style="color:#2b2b2d;">Gowda and colleagues</strong>, <em>Academic Medicine</em> (2014).</li>
+                <li>The early-learner cluster-based instructional model validated by <strong style="color:#2b2b2d;">Jewett and colleagues</strong>, <em>BMC Medical Education</em> (2024).</li>
+                <li>Harmonized through faculty review at the <strong style="color:#2b2b2d;">Icahn School of Medicine at Mount Sinai</strong>.</li>
+              </ul>
+              <p style="font-size:13px; line-height:1.6; color:#8b8c8e; margin:16px 0 0; font-style:italic;">FULL and PARTIAL performance descriptors are offered as examples of clear performance criteria that programs may adapt to their own learners and assessment systems.</p>
+            </div>
+          </div>
+        </sc-if>
+
+        </div>
+        </sc-if>
+
+      </div>
+    </div>
+  </main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = {
+      data: null,
+      scriptsData: null,
+      activeScript: null,
+      view: "home",
+      activeCluster: "cardiac",
+      searchQ: "",
+      abbrevQ: "",
+      scriptFilter: "all",
+      deviceFilter: "all",
+      favs: this.loadJSON("rps_favs_v1", []),
+      checks: this.loadJSON("rps_checks_v1", []),
+      openSections: ["core-1"],
+      openTasks: [],
+      openDevices: [],
+      narrow: false,
+      sidebarOpen: true,
+    };
+  }
+
+  loadJSON(key, fallback) {
+    try { const v = localStorage.getItem(key); return v ? JSON.parse(v) : fallback; }
+    catch (e) { return fallback; }
+  }
+  saveJSON(key, val) { try { localStorage.setItem(key, JSON.stringify(val)); } catch (e) {} }
+
+  async componentDidMount() {
+    try {
+      const [m, sd] = await Promise.all([import("./data.js"), import("./scripts-data.js")]);
+      this.setState({ data: m, scriptsData: sd.ILLNESS_SCRIPTS });
+    }
+    catch (e) { console.error("data load failed", e); }
+    if (window.matchMedia) {
+      this.mq = window.matchMedia("(max-width: 880px)");
+      const apply = () => this.setState({ narrow: this.mq.matches, sidebarOpen: !this.mq.matches });
+      apply();
+      this.mqHandler = apply;
+      if (this.mq.addEventListener) this.mq.addEventListener("change", apply);
+      else this.mq.addListener(apply);
+    }
+  }
+  componentWillUnmount() {
+    if (this.mq && this.mqHandler) {
+      if (this.mq.removeEventListener) this.mq.removeEventListener("change", this.mqHandler);
+      else this.mq.removeListener(this.mqHandler);
+    }
+  }
+
+  // ---- navigation ----
+  go(view) {
+    this.setState({ view, searchQ: "" });
+    if (this.state.narrow) this.setState({ sidebarOpen: false });
+    const sc = document.querySelector("main > div");
+    if (sc) sc.scrollTop = 0;
+  }
+  openCluster(id) {
+    this.setState({ view: "clusterDetail", activeCluster: id, searchQ: "" });
+    if (this.state.narrow) this.setState({ sidebarOpen: false });
+    const sc = document.querySelector("main > div"); if (sc) sc.scrollTop = 0;
+  }
+  openScript(title) {
+    this.setState({ view: "scriptDetail", activeScript: title, searchQ: "" });
+    if (this.state.narrow) this.setState({ sidebarOpen: false });
+    const sc = document.querySelector("main > div"); if (sc) sc.scrollTop = 0;
+  }
+
+  // ---- toggles ----
+  toggleIn(arrKey, id, persistKey) {
+    const arr = this.state[arrKey];
+    const next = arr.includes(id) ? arr.filter(x => x !== id) : arr.concat(id);
+    this.setState({ [arrKey]: next });
+    if (persistKey) this.saveJSON(persistKey, next);
+  }
+  toggleFav(item) {
+    const exists = this.state.favs.some(f => f.key === item.key);
+    const next = exists ? this.state.favs.filter(f => f.key !== item.key) : this.state.favs.concat(item);
+    this.setState({ favs: next });
+    this.saveJSON("rps_favs_v1", next);
+  }
+
+  // ---- helpers ----
+  navStyle(view) {
+    const active = this.state.view === view;
+    const base = "display:flex;align-items:center;gap:12px;padding:10px 13px;border-radius:9px;font-size:14px;cursor:pointer;margin-bottom:2px;transition:background .12s;white-space:nowrap;";
+    if (active) return base + "background:#0073A2;color:#ffffff;font-weight:600;";
+    return base + "background:transparent;color:#cbccce;font-weight:500;";
+  }
+
+  tint(hex) {
+    const map = { "#0073A2": "#e6f0f7", "#0E3692": "#e6f0f7", "#68357C": "#efe9f5", "#58595B": "#ededee" };
+    return map[hex] || "#eef0f1";
+  }
+  initials(name) {
+    const clean = name.replace(/[^A-Za-z ]/g, "");
+    const parts = clean.split(" ").filter(Boolean);
+    if (parts.length >= 2) return (parts[0][0] + parts[1][0]).toUpperCase();
+    return name.slice(0, 2).toUpperCase();
+  }
+
+  renderVals() {
+    const d = this.state.data;
+    const st = this.state;
+    const favKeys = new Set(st.favs.map(f => f.key));
+    const checkSet = new Set(st.checks);
+    const SYS = d ? d.SYSTEM_LABELS : {};
+    const clusterColor = {};
+    if (d) d.CLUSTERS.forEach(c => { clusterColor[c.id] = c.color; });
+
+    const nav = {
+      home: () => this.go("home"), core: () => this.go("core"), clusters: () => this.go("clusters"),
+      scripts: () => this.go("scripts"), labs: () => this.go("labs"), algorithms: () => this.go("algorithms"),
+      devices: () => this.go("devices"), abbrev: () => this.go("abbrev"), favorites: () => this.go("favorites"),
+      ack: () => this.go("ack"),
+    };
+    const navStyles = {
+      home: this.navStyle("home"), core: this.navStyle("core"), clusters: this.navStyle("clusters"),
+      scripts: this.navStyle("scripts"), labs: this.navStyle("labs"), algorithms: this.navStyle("algorithms"),
+      devices: this.navStyle("devices"), abbrev: this.navStyle("abbrev"), favorites: this.navStyle("favorites"),
+      ack: this.navStyle("ack"),
+    };
+
+    const badgeStyle = "font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:11px;color:#9a9b9d;background:rgba(255,255,255,.08);padding:1px 7px;border-radius:9px;";
+    const favBadgeStyle = "font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:11px;color:#fff;background:#68357C;padding:1px 7px;border-radius:9px;min-width:18px;text-align:center;";
+
+    // sidebar / responsive
+    const narrow = st.narrow, open = st.sidebarOpen;
+    let sidebarStyle = "width:248px;flex:none;background:#3f4042;display:flex;flex-direction:column;padding:20px 14px;overflow-y:auto;height:100vh;";
+    let backdropStyle = "display:none;";
+    let hamburgerStyle = "display:none;";
+    if (narrow) {
+      sidebarStyle = "width:262px;background:#3f4042;display:flex;flex-direction:column;padding:20px 14px;overflow-y:auto;height:100vh;position:fixed;left:0;top:0;bottom:0;z-index:50;transition:transform .22s ease;transform:translateX(" + (open ? "0" : "-100%") + ");box-shadow:0 0 40px rgba(0,0,0,.3);";
+      backdropStyle = open ? "position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:40;" : "display:none;";
+      hamburgerStyle = "display:flex;align-items:center;justify-content:center;width:40px;height:40px;border:1px solid #E4E4E5;border-radius:9px;cursor:pointer;flex:none;";
+    }
+
+    // search
+    const q = st.searchQ.trim().toLowerCase();
+    const isSearching = q.length >= 2;
+    let searchResults = [];
+    if (isSearching && d) {
+      const push = (kind, color, label, sub, onClick) => searchResults.push({ kind, color, label, sub, onClick });
+      d.CORE_PE.forEach(s => s.tasks.forEach(t => {
+        if (t.task.toLowerCase().includes(q)) push("Maneuver", "#0073A2", t.task, "Core PE · " + s.section, () => this.go("core"));
+      }));
+      d.CLUSTERS.forEach(c => {
+        c.clusterTasks.concat(c.addOns).forEach(t => {
+          if (t.task.toLowerCase().includes(q)) push("Maneuver", c.color, t.task, c.name + " cluster", () => this.openCluster(c.id));
+        });
+      });
+      (st.scriptsData || []).forEach(s => {
+        if (s.title.toLowerCase().includes(q)) push("Script", "#68357C", s.title.replace(/\b([A-Z])([A-Z]+)\b/g, (m, a, b) => a + b.toLowerCase()), "Illness script · " + (SYS[s.system] || ""), () => this.openScript(s.title));
+        else if (s.ddx.some(dd => dd.name.toLowerCase().includes(q))) push("Script", "#68357C", s.title.replace(/\b([A-Z])([A-Z]+)\b/g, (m, a, b) => a + b.toLowerCase()), "Illness script · contains differential match", () => this.openScript(s.title));
+      });
+      d.DEVICES.forEach(dev => {
+        if (dev.name.toLowerCase().includes(q)) push("Device", "#58595B", dev.name, "Device modification · " + dev.category, () => { this.setState({ openDevices: [dev.name] }); this.go("devices"); });
+      });
+      d.ABBREVIATIONS.forEach(a => {
+        if (a.abbr.toLowerCase().includes(q) || a.meaning.toLowerCase().includes(q)) push("Abbrev", "#0E3692", a.abbr + " — " + a.meaning, "Abbreviation", () => this.go("abbrev"));
+      });
+      d.LABS.forEach(p => p.tests.forEach(t => {
+        if (t.name.toLowerCase().includes(q)) push("Lab", "#0E3692", t.name, p.panel + " · " + t.range + " " + t.units, () => this.go("labs"));
+      }));
+      searchResults = searchResults.slice(0, 40);
+    }
+
+    // favorites
+    const favColor = (kind) => kind === "Script" ? "#68357C" : kind === "Device" ? "#58595B" : "#0073A2";
+    const favList = st.favs.map(f => ({
+      ...f, color: favColor(f.kind),
+      onClick: () => { if (f.target === "cluster") this.openCluster(f.cluster); else if (f.target === "script") this.openScript(f.script); else if (f.target === "devices") { this.setState({ openDevices: [f.label] }); this.go("devices"); } else this.go(f.target); },
+      onRemove: () => this.toggleFav(f),
+    }));
+    const favPreview = favList.slice(0, 6);
+    const favEmpty = favList.length === 0;
+
+    // home concern chips
+    const concernChips = d ? d.CLUSTERS.map(c => ({ label: c.name, color: c.color, onClick: () => this.openCluster(c.id) })) : [];
+
+    // core sections
+    const coreSections = d ? d.CORE_PE.map((s, si) => {
+      const tasks = s.tasks.map((t, ti) => {
+        const id = s.id + ":" + ti;
+        const checked = checkSet.has(id);
+        const openCrit = st.openTasks.includes(id);
+        const favItem = { key: "man:" + t.task, kind: "Maneuver", label: t.task, target: "core" };
+        const isFav = favKeys.has(favItem.key);
+        return {
+          id, task: t.task, full: t.full, partial: t.partial, checked, open: openCrit,
+          checkboxStyle: "width:22px;height:22px;border-radius:6px;flex:none;cursor:pointer;display:flex;align-items:center;justify-content:center;margin-top:1px;" + (checked ? "background:#0073A2;border:1.5px solid #0073A2;" : "background:#fff;border:1.5px solid #cfd0d1;"),
+          labelColor: checked ? "#9a9b9d" : "#2b2b2d",
+          critLabel: openCrit ? "Hide" : "Criteria",
+          starFill: isFav ? "#68357C" : "none", starStroke: isFav ? "#68357C" : "#c4c5c7",
+          onToggleCheck: () => this.toggleIn("checks", id, "rps_checks_v1"),
+          onToggleCrit: () => this.toggleIn("openTasks", id),
+          onToggleFav: () => this.toggleFav(favItem),
+        };
+      });
+      const done = tasks.filter(t => t.checked).length;
+      const sopen = st.openSections.includes(s.id);
+      return {
+        id: s.id, section: s.section, num: si + 1, tasks, done, total: tasks.length, open: sopen,
+        countColor: done === tasks.length && tasks.length ? "#1F8A5B" : "#8b8c8e",
+        chevronStyle: "transition:transform .15s;transform:rotate(" + (sopen ? "180deg" : "0deg") + ");flex:none;",
+        onToggle: () => this.toggleIn("openSections", s.id),
+      };
+    }) : [];
+    const coreTotal = coreSections.reduce((a, s) => a + s.total, 0);
+    const coreDone = coreSections.reduce((a, s) => a + s.done, 0);
+    const coreProgress = { done: coreDone, total: coreTotal, pct: coreTotal ? Math.round(coreDone / coreTotal * 100) : 0 };
+
+    // clusters list
+    const clusters = d ? d.CLUSTERS.map(c => ({
+      id: c.id, name: c.name, color: c.color, tint: this.tint(c.color), initials: this.initials(c.name),
+      blurb: c.blurb, presCount: c.presentations.length, taskCount: c.clusterTasks.length + c.addOns.length,
+      onOpen: () => this.openCluster(c.id),
+    })) : [];
+
+    // active cluster detail
+    let ac = { name: "", color: "#0073A2", blurb: "", presentations: [], coreTasks: [], clusterTasks: [], addOns: [], hasAddOns: false };
+    if (d) {
+      const c = d.CLUSTERS.find(x => x.id === st.activeCluster) || d.CLUSTERS[0];
+      const mapTask = (t, ti, kind) => {
+        const id = c.id + ":" + kind + ":" + ti;
+        const checked = checkSet.has(id);
+        const openCrit = st.openTasks.includes(id);
+        const favItem = { key: "man:" + t.task, kind: "Maneuver", label: t.task, target: "cluster", cluster: c.id };
+        const isFav = favKeys.has(favItem.key);
+        return {
+          id, task: t.task, full: t.full, partial: t.partial, checked, open: openCrit,
+          checkboxStyle: "width:22px;height:22px;border-radius:6px;flex:none;cursor:pointer;display:flex;align-items:center;justify-content:center;margin-top:1px;" + (checked ? "background:" + c.color + ";border:1.5px solid " + c.color + ";" : "background:#fff;border:1.5px solid #cfd0d1;"),
+          labelColor: checked ? "#9a9b9d" : "#2b2b2d",
+          critLabel: openCrit ? "Hide" : "Criteria",
+          starFill: isFav ? "#68357C" : "none", starStroke: isFav ? "#68357C" : "#c4c5c7",
+          onToggleCheck: () => this.toggleIn("checks", id, "rps_checks_v1"),
+          onToggleCrit: () => this.toggleIn("openTasks", id),
+          onToggleFav: () => this.toggleFav(favItem),
+        };
+      };
+      ac = {
+        name: c.name, color: c.color, blurb: c.blurb,
+        presentations: c.presentations, coreTasks: c.coreTasks,
+        clusterTasks: c.clusterTasks.map((t, i) => mapTask(t, i, "c")),
+        addOns: c.addOns.map((t, i) => mapTask(t, i, "a")),
+        hasAddOns: c.addOns.length > 0,
+      };
+    }
+
+    // scripts
+    const allScripts = st.scriptsData || [];
+    const scriptFilterDefs = [{ id: "all", label: "All" }].concat(d ? d.CLUSTERS.map(c => ({ id: c.id, label: c.name })) : []);
+    const scriptFilters = scriptFilterDefs.map(f => {
+      const active = st.scriptFilter === f.id;
+      return { label: f.label, onClick: () => this.setState({ scriptFilter: f.id }),
+        style: "font-weight:600;font-size:13px;padding:7px 14px;border-radius:20px;cursor:pointer;" + (active ? "background:#68357C;color:#fff;border:1.5px solid #68357C;" : "background:#fff;color:#58595B;border:1.5px solid #E4E4E5;") };
+    });
+    const niceTitle = (t) => t.replace(/\b([A-Z])([A-Z]+)\b/g, (m, a, b) => /^(AAA|RLQ|LLQ|RUQ|LUQ|SOB|GAD|AV|II|III|IV|VI|VII|VIII|IX|XII|CVA|JVP|HINTS|BPPV|UMN|MSK|HEENT|GU|GI|CN)$/.test(m) ? m : a + b.toLowerCase());
+    let scriptGroups = [];
+    if (allScripts.length) {
+      const filtered = allScripts.filter(s => st.scriptFilter === "all" || s.system === st.scriptFilter);
+      const byLetter = {};
+      filtered.forEach(s => {
+        const L = s.title[0].toUpperCase();
+        (byLetter[L] = byLetter[L] || []).push(s);
+      });
+      scriptGroups = Object.keys(byLetter).sort().map(L => ({
+        letter: L,
+        items: byLetter[L].slice().sort((a, b) => a.title.localeCompare(b.title)).map(s => {
+          const favItem = { key: "scr:" + s.title, kind: "Script", label: niceTitle(s.title), target: "script", script: s.title };
+          const isFav = favKeys.has(favItem.key);
+          return { name: niceTitle(s.title), ddxCount: s.ddx.length, systemLabel: SYS[s.system] || "", color: clusterColor[s.system] || "#58595B",
+            starFill: isFav ? "#68357C" : "none", starStroke: isFav ? "#68357C" : "#c4c5c7",
+            onToggleFav: () => this.toggleFav(favItem), onOpen: () => this.openScript(s.title) };
+        }),
+      }));
+    }
+    const scriptEmpty = allScripts.length > 0 && scriptGroups.length === 0;
+    const scriptTotal = allScripts.length;
+
+    // active script detail
+    let asd = { title: "", color: "#68357C", systemLabel: "", ddxCount: 0, ddx: [], rows: [], tableMinWidth: "760px", tableWrapStyle: "display:block;", cardsWrapStyle: "display:none;" };
+    if (st.activeScript && allScripts.length) {
+      const s = allScripts.find(x => x.title === st.activeScript);
+      if (s) {
+        const color = clusterColor[s.system] || "#68357C";
+        const fieldDefs = [["symptom", "Symptom"], ["patho", "Pathophysiology"], ["epi", "Epidemiology"], ["timing", "Timing"], ["signs", "Symptoms & Signs"], ["dx", "Diagnostics"], ["tx", "Treatment"]];
+        const favItem = { key: "scr:" + s.title, kind: "Script", label: niceTitle(s.title), target: "script", script: s.title };
+        const isFav = favKeys.has(favItem.key);
+        asd = {
+          title: niceTitle(s.title), color, systemLabel: SYS[s.system] || "", ddxCount: s.ddx.length,
+          ddx: s.ddx.map(d2 => ({ name: niceTitle(d2.name), fields: fieldDefs.map(([k, lbl]) => ({ label: lbl, value: d2[k] || "\u2014" })) })),
+          rows: fieldDefs.map(([k, lbl], i) => ({
+            label: lbl, cells: s.ddx.map(d2 => d2[k] || "\u2014"),
+            rowStyle: i % 2 ? "background:#fafbfc;" : "background:#fff;",
+            labelBg: i % 2 ? "#fafbfc" : "#fff",
+          })),
+          tableMinWidth: (160 + s.ddx.length * 210) + "px",
+          tableWrapStyle: st.narrow ? "display:none;" : "display:block;",
+          cardsWrapStyle: st.narrow ? "display:block;" : "display:none;",
+          starFill: isFav ? "#68357C" : "none", starStroke: isFav ? "#68357C" : "#c4c5c7",
+          onToggleFav: () => this.toggleFav(favItem),
+          onOpenCluster: () => this.openCluster(s.system),
+        };
+      }
+    }
+
+    // labs
+    const labs = d ? d.LABS.map(p => ({ panel: p.panel, tests: p.tests.map(t => ({ ...t, hasCrit: !!t.critical, units: t.units || "" })) })) : [];
+
+    // algorithms
+    const algos = d ? d.ALGORITHMS.map(a => ({
+      id: a.id, name: a.name, summary: a.summary, color: clusterColor[a.system] || "#0073A2", systemLabel: SYS[a.system] || "",
+      steps: a.steps.map((s, i) => ({ step: s.step, detail: s.detail, num: i + 1,
+        lineStyle: "width:2px;flex:1;background:#e4e4e5;margin-top:2px;min-height:" + (i === a.steps.length - 1 ? "0" : "12px") + ";" + (i === a.steps.length - 1 ? "display:none;" : "") })),
+    })) : [];
+
+    // devices
+    const deviceCats = d ? Array.from(new Set(d.DEVICES.map(x => x.category))) : [];
+    const deviceFilterDefs = [{ id: "all", label: "All" }].concat(deviceCats.map(c => ({ id: c, label: c })));
+    const deviceFilters = deviceFilterDefs.map(f => {
+      const active = st.deviceFilter === f.id;
+      return { label: f.label, onClick: () => this.setState({ deviceFilter: f.id }),
+        style: "font-weight:600;font-size:13px;padding:7px 14px;border-radius:20px;cursor:pointer;" + (active ? "background:#58595B;color:#fff;border:1.5px solid #58595B;" : "background:#fff;color:#58595B;border:1.5px solid #E4E4E5;") };
+    });
+    const devices = d ? d.DEVICES.filter(x => st.deviceFilter === "all" || x.category === st.deviceFilter).map(dev => {
+      const isOpen = st.openDevices.includes(dev.name);
+      const favItem = { key: "dev:" + dev.name, kind: "Device", label: dev.name, target: "devices" };
+      const isFav = favKeys.has(favItem.key);
+      return {
+        name: dev.name, category: dev.category, device: dev.device, indication: dev.indication, location: dev.location, mods: dev.mods,
+        imgs: (dev.imgs || []).map((src, i) => ({ src, alt: dev.name + " illustration " + (i + 1) })),
+        hasImgs: !!(dev.imgs && dev.imgs.length),
+        noImgs: !(dev.imgs && dev.imgs.length),
+        open: isOpen,
+        chevronStyle: "transition:transform .15s;transform:rotate(" + (isOpen ? "180deg" : "0deg") + ");flex:none;",
+        starFill: isFav ? "#68357C" : "none", starStroke: isFav ? "#68357C" : "#c4c5c7",
+        onToggle: () => this.toggleIn("openDevices", dev.name),
+        onToggleFav: () => this.toggleFav(favItem),
+      };
+    }) : [];
+
+    // abbrev
+    const aq = st.abbrevQ.trim().toLowerCase();
+    const abbrevList = d ? d.ABBREVIATIONS.filter(a => !aq || a.abbr.toLowerCase().includes(aq) || a.meaning.toLowerCase().includes(aq)) : [];
+
+    const view = st.view;
+    return {
+      ready: !!d,
+      nav, navStyles, badgeStyle, favBadgeStyle, favCount: st.favs.length,
+      sidebarStyle, backdropStyle, hamburgerStyle,
+      toggleSidebar: () => this.setState({ sidebarOpen: !st.sidebarOpen }),
+      closeSidebar: () => this.setState({ sidebarOpen: false }),
+      ackCardOpen: !!st.ackCardOpen,
+      toggleAckCard: () => this.setState({ ackCardOpen: !st.ackCardOpen }),
+      closeAckCard: () => this.setState({ ackCardOpen: false }),
+      goAckFull: () => this.setState({ ackCardOpen: false }, () => this.go("ack")),
+      stop: (e) => { if (e && e.stopPropagation) e.stopPropagation(); },
+      searchQ: st.searchQ, onSearch: (e) => this.setState({ searchQ: e.target.value }),
+      clearSearch: () => this.setState({ searchQ: "" }),
+      clearBtnStyle: st.searchQ ? "cursor:pointer;display:flex;align-items:center;" : "display:none;",
+      isSearching, searchResults, searchCount: searchResults.length, searchEmpty: isSearching && searchResults.length === 0,
+      showBody: !isSearching,
+      isHome: view === "home", isCore: view === "core", isClusters: view === "clusters",
+      isClusterDetail: view === "clusterDetail", isScripts: view === "scripts", isLabs: view === "labs",
+      isScriptDetail: view === "scriptDetail",
+      isAlgos: view === "algorithms", isDevices: view === "devices", isAbbrev: view === "abbrev",
+      isFav: view === "favorites", isAck: view === "ack",
+      concernChips, favPreview, favEmpty, favList,
+      coreSections, coreProgress, resetCore: () => { this.setState({ checks: [] }); this.saveJSON("rps_checks_v1", []); },
+      clusters, ac,
+      scriptFilters, scriptGroups, scriptEmpty, scriptTotal, asd,
+      labs, algos,
+      deviceFilters, devices,
+      abbrevQ: st.abbrevQ, onAbbrevSearch: (e) => this.setState({ abbrevQ: e.target.value }), abbrevList,
+    };
+  }
+}
+</script>
+</body>
+</html>
