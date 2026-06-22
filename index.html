@@ -31,6 +31,21 @@
   input::placeholder { color: #9a9b9d; }
   input:focus { outline: none; }
   @keyframes rpsspin { to { transform: rotate(360deg); } }
+
+  /* Smaller home tiles on phones */
+  @media (max-width: 600px) {
+    .home-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 10px !important; }
+    .home-grid > div { padding: 13px !important; border-radius: 12px !important; }
+    .home-grid > div > div:nth-child(1) { width: 34px !important; height: 34px !important; border-radius: 9px !important; margin-bottom: 10px !important; }
+    .home-grid > div > div:nth-child(1) svg { width: 18px !important; height: 18px !important; }
+    .home-grid > div > div:nth-child(2) { font-size: 15px !important; }
+    .home-grid > div > div:nth-child(3) { font-size: 12px !important; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+    .home-grid > div > div:nth-child(4) { font-size: 11.5px !important; margin-top: 11px !important; }
+    .res-grid { grid-template-columns: 1fr !important; gap: 10px !important; }
+    .res-grid > a { padding: 13px !important; gap: 12px !important; }
+    .res-grid > a > div:nth-child(1) { width: 38px !important; height: 44px !important; }
+    .res-grid > a > div:nth-child(2) > div:nth-child(1) { font-size: 13.5px !important; }
+  }
 </style>
 </helmet>
 
@@ -102,6 +117,21 @@
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H7l-3 3z"/><path d="M8 9h8M8 12h5"/></svg>
         <span>Acknowledgement</span>
       </div>
+    </nav>
+
+    <div style="height:1px; background:#5a5b5d; margin:14px 10px;"></div>
+    <div style="font-family:'Barlow Condensed',sans-serif; letter-spacing:0.16em; text-transform:uppercase; color:#76777a; font-weight:600; font-size:11px; padding:0 14px 8px;">Resources</div>
+    <nav style="display:flex; flex-direction:column;">
+      <a href="https://premiumbasicsciences.lwwhealthlibrary.com/book.aspx?bookid=3430" target="_blank" rel="noopener noreferrer" style="display:flex; align-items:center; gap:12px; padding:10px 13px; border-radius:9px; font-size:13.5px; cursor:pointer; margin-bottom:2px; color:#cbccce; font-weight:500; text-decoration:none; white-space:nowrap;" style-hover="background:rgba(255,255,255,.06);">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none;"><path d="M4 4h7a2 2 0 0 1 2 2v14a1.5 1.5 0 0 0-1.5-1.5H4z"/><path d="M20 4h-7a2 2 0 0 0-2 2v14a1.5 1.5 0 0 1 1.5-1.5H20z"/></svg>
+        <span style="flex:1; overflow:hidden; text-overflow:ellipsis;">Bates&rsquo; Guide, 14e</span>
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#8a8b8d" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex:none;"><path d="M7 17L17 7M9 7h8v8"/></svg>
+      </a>
+      <a href="https://clinicalcontext.lww.com/en/batesvisualguide" target="_blank" rel="noopener noreferrer" style="display:flex; align-items:center; gap:12px; padding:10px 13px; border-radius:9px; font-size:13.5px; cursor:pointer; margin-bottom:2px; color:#cbccce; font-weight:500; text-decoration:none; white-space:nowrap;" style-hover="background:rgba(255,255,255,.06);">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none;"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M10 9l5 3-5 3z"/></svg>
+        <span style="flex:1; overflow:hidden; text-overflow:ellipsis;">Bates&rsquo; Visual Guide</span>
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#8a8b8d" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex:none;"><path d="M7 17L17 7M9 7h8v8"/></svg>
+      </a>
     </nav>
 
     <div style="margin-top:auto; padding-top:16px;">
@@ -199,7 +229,7 @@
             <p style="font-size:16px; line-height:1.6; color:#58595B; margin:0 0 14px; max-width:620px;">Clinical content is adapted from Soriano, Rainier P., et al. <em>Bates&rsquo; Pocket Guide to Physical Examination and History Taking</em> (10th ed., Wolters Kluwer, 2026).</p>
             <p style="font-size:13.5px; line-height:1.55; color:#8b8c8e; margin:0 0 30px; max-width:620px;">For personal study only. Please do not copy, redistribute, or reproduce this material. All rights to the source content remain with the authors and publisher. See <span onClick="{{ nav.ack }}" style="color:#0073A2; font-weight:600; cursor:pointer;">Acknowledgments</span>.</p>
 
-            <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(248px, 1fr)); gap:16px;">
+            <div class="home-grid" style="display:grid; grid-template-columns:repeat(auto-fill, minmax(248px, 1fr)); gap:16px;">
               <div onClick="{{ nav.core }}" style="background:#fff; border:1px solid #E4E4E5; border-radius:14px; padding:22px; cursor:pointer;" style-hover="border-color:#0073A2; box-shadow:0 4px 16px rgba(0,0,0,.06); transform:translateY(-2px);">
                 <div style="width:44px; height:44px; border-radius:11px; background:#e6f0f7; display:flex; align-items:center; justify-content:center; margin-bottom:15px;"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="#0E3692" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3v6a4 4 0 0 0 8 0V3"/><path d="M9 13v3a5 5 0 0 0 10 0v-2"/><circle cx="19" cy="11" r="2"/></svg></div>
                 <div style="font-weight:700; font-size:18px; margin-bottom:4px;">Core PE Skills</div>
@@ -265,6 +295,26 @@
                 </div>
               </div>
             </div>
+
+            <div style="font-family:'Barlow Condensed',sans-serif; letter-spacing:0.12em; text-transform:uppercase; color:#68357C; font-weight:600; font-size:12px; margin:30px 0 13px;">Source texts</div>
+            <div class="res-grid" style="display:grid; grid-template-columns:repeat(auto-fill, minmax(300px, 1fr)); gap:16px;">
+              <a href="https://premiumbasicsciences.lwwhealthlibrary.com/book.aspx?bookid=3430" target="_blank" rel="noopener noreferrer" style="display:flex; align-items:center; gap:15px; background:#fff; border:1px solid #E4E4E5; border-radius:14px; padding:18px; text-decoration:none; cursor:pointer;" style-hover="border-color:#0073A2; box-shadow:0 4px 16px rgba(0,0,0,.06); transform:translateY(-2px);">
+                <div style="width:46px; height:54px; border-radius:6px; background:#e6f0f7; display:flex; align-items:center; justify-content:center; flex:none;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0073A2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h7a2 2 0 0 1 2 2v14a1.5 1.5 0 0 0-1.5-1.5H4z"/><path d="M20 4h-7a2 2 0 0 0-2 2v14a1.5 1.5 0 0 1 1.5-1.5H20z"/></svg></div>
+                <div style="flex:1; min-width:0;">
+                  <div style="font-weight:700; font-size:15px; color:#2b2b2d; line-height:1.25;">Bates&rsquo; Guide to Physical Examination and History Taking, 14e</div>
+                  <div style="font-size:12.5px; color:#9a9b9d; margin-top:3px;">LWW Health Library &middot; opens in new tab</div>
+                </div>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#b3b4b6" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex:none;"><path d="M7 17L17 7M9 7h8v8"/></svg>
+              </a>
+              <a href="https://clinicalcontext.lww.com/en/batesvisualguide" target="_blank" rel="noopener noreferrer" style="display:flex; align-items:center; gap:15px; background:#fff; border:1px solid #E4E4E5; border-radius:14px; padding:18px; text-decoration:none; cursor:pointer;" style-hover="border-color:#68357C; box-shadow:0 4px 16px rgba(0,0,0,.06); transform:translateY(-2px);">
+                <div style="width:46px; height:54px; border-radius:6px; background:#efe9f5; display:flex; align-items:center; justify-content:center; flex:none;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#68357C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M10 9l5 3-5 3z"/></svg></div>
+                <div style="flex:1; min-width:0;">
+                  <div style="font-weight:700; font-size:15px; color:#2b2b2d; line-height:1.25;">Bates&rsquo; Visual Guide to Physical Examination</div>
+                  <div style="font-size:12.5px; color:#9a9b9d; margin-top:3px;">Clinical Context &middot; opens in new tab</div>
+                </div>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#b3b4b6" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex:none;"><path d="M7 17L17 7M9 7h8v8"/></svg>
+              </a>
+            </div>
           </div>
         </sc-if>
 
@@ -311,9 +361,6 @@
                               </sc-if>
                             </div>
                             <span onClick="{{ t.onToggleCrit }}" style="font-size:11.5px; font-weight:600; color:#0073A2; cursor:pointer; white-space:nowrap; padding-top:2px;">{{ t.critLabel }}</span>
-                            <span onClick="{{ t.onToggleFav }}" style="cursor:pointer; flex:none; padding-top:1px;">
-                              <svg width="18" height="18" viewBox="0 0 24 24" fill="{{ t.starFill }}" stroke="{{ t.starStroke }}" stroke-width="2" stroke-linejoin="round"><path d="M12 4l2.4 5.4 5.6.5-4.2 3.7 1.3 5.5L12 16.8 6.9 19.6l1.3-5.5L4 10.4l5.6-.5z"/></svg>
-                            </span>
                           </div>
                         </div>
                       </sc-for>
@@ -338,7 +385,10 @@
                   <div style="padding:20px;">
                     <div style="display:flex; align-items:center; gap:11px; margin-bottom:12px;">
                       <div style="width:40px; height:40px; border-radius:10px; background:{{ c.tint }}; color:{{ c.color }}; display:flex; align-items:center; justify-content:center; font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:17px; flex:none;">{{ c.initials }}</div>
-                      <div style="font-weight:700; font-size:18px;">{{ c.name }}</div>
+                      <div style="flex:1; font-weight:700; font-size:18px;">{{ c.name }}</div>
+                      <span onClick="{{ c.onToggleFav }}" style="cursor:pointer; flex:none; margin:-4px -4px 0 0; padding:4px;" title="Save this cluster to Favorites">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="{{ c.starFill }}" stroke="{{ c.starStroke }}" stroke-width="2" stroke-linejoin="round"><path d="M12 4l2.4 5.4 5.6.5-4.2 3.7 1.3 5.5L12 16.8 6.9 19.6l1.3-5.5L4 10.4l5.6-.5z"/></svg>
+                      </span>
                     </div>
                     <div style="font-size:13px; line-height:1.5; color:#6f7072; margin-bottom:14px; display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden;">{{ c.blurb }}</div>
                     <div style="display:flex; gap:16px; font-family:'Barlow Condensed',sans-serif; font-weight:600; font-size:12.5px; letter-spacing:0.04em; color:#8b8c8e;">
@@ -355,12 +405,16 @@
         <!-- ============ CLUSTER DETAIL ============ -->
         <sc-if value="{{ isClusterDetail }}" hint-placeholder-val="{{ false }}">
           <div>
-            <span onClick="{{ nav.clusters }}" style="display:inline-flex; align-items:center; gap:6px; font-size:13px; font-weight:600; color:#8b8c8e; cursor:pointer; margin-bottom:16px;" style-hover="color:#0073A2;">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M15 6l-6 6 6 6"/></svg> All clusters
+            <span onClick="{{ goBack }}" style="display:inline-flex; align-items:center; gap:6px; font-size:13px; font-weight:600; color:#8b8c8e; cursor:pointer; margin-bottom:16px;" style-hover="color:#0073A2;">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M15 6l-6 6 6 6"/></svg> {{ backLabel }}
             </span>
             <div style="display:flex; align-items:center; gap:14px; margin-bottom:8px;">
               <div style="width:14px; height:36px; border-radius:5px; background:{{ ac.color }};"></div>
-              <h1 style="font-size:32px; font-weight:700; letter-spacing:-0.02em; margin:0;">{{ ac.name }}</h1>
+              <h1 style="flex:1; font-size:32px; font-weight:700; letter-spacing:-0.02em; margin:0;">{{ ac.name }}</h1>
+              <span onClick="{{ ac.onToggleFav }}" style="display:inline-flex; align-items:center; gap:7px; cursor:pointer; flex:none; border:1.5px solid #E4E4E5; border-radius:9px; padding:8px 13px; font-weight:600; font-size:13px; color:{{ ac.favTextColor }};" style-hover="border-color:#cfd0d1;" title="Save this cluster to Favorites">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="{{ ac.starFill }}" stroke="{{ ac.starStroke }}" stroke-width="2" stroke-linejoin="round"><path d="M12 4l2.4 5.4 5.6.5-4.2 3.7 1.3 5.5L12 16.8 6.9 19.6l1.3-5.5L4 10.4l5.6-.5z"/></svg>
+                {{ ac.favLabel }}
+              </span>
             </div>
             <p style="font-size:15px; line-height:1.6; color:#58595B; margin:0 0 22px; max-width:680px;">{{ ac.blurb }}</p>
 
@@ -400,9 +454,6 @@
                       </sc-if>
                     </div>
                     <span onClick="{{ t.onToggleCrit }}" style="font-size:11.5px; font-weight:600; color:#0073A2; cursor:pointer; white-space:nowrap; padding-top:2px;">{{ t.critLabel }}</span>
-                    <span onClick="{{ t.onToggleFav }}" style="cursor:pointer; flex:none; padding-top:1px;">
-                      <svg width="18" height="18" viewBox="0 0 24 24" fill="{{ t.starFill }}" stroke="{{ t.starStroke }}" stroke-width="2" stroke-linejoin="round"><path d="M12 4l2.4 5.4 5.6.5-4.2 3.7 1.3 5.5L12 16.8 6.9 19.6l1.3-5.5L4 10.4l5.6-.5z"/></svg>
-                    </span>
                   </div>
                 </div>
               </sc-for>
@@ -428,9 +479,6 @@
                           </sc-if>
                         </div>
                         <span onClick="{{ t.onToggleCrit }}" style="font-size:11.5px; font-weight:600; color:#0073A2; cursor:pointer; white-space:nowrap; padding-top:2px;">{{ t.critLabel }}</span>
-                        <span onClick="{{ t.onToggleFav }}" style="cursor:pointer; flex:none; padding-top:1px;">
-                          <svg width="18" height="18" viewBox="0 0 24 24" fill="{{ t.starFill }}" stroke="{{ t.starStroke }}" stroke-width="2" stroke-linejoin="round"><path d="M12 4l2.4 5.4 5.6.5-4.2 3.7 1.3 5.5L12 16.8 6.9 19.6l1.3-5.5L4 10.4l5.6-.5z"/></svg>
-                        </span>
                       </div>
                     </div>
                   </sc-for>
@@ -481,8 +529,8 @@
         <!-- ============ ILLNESS SCRIPT DETAIL ============ -->
         <sc-if value="{{ isScriptDetail }}" hint-placeholder-val="{{ false }}">
           <div>
-            <span onClick="{{ nav.scripts }}" style="display:inline-flex; align-items:center; gap:6px; font-size:13px; font-weight:600; color:#8b8c8e; cursor:pointer; margin-bottom:16px;" style-hover="color:#68357C;">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M15 6l-6 6 6 6"/></svg> All illness scripts
+            <span onClick="{{ goBack }}" style="display:inline-flex; align-items:center; gap:6px; font-size:13px; font-weight:600; color:#8b8c8e; cursor:pointer; margin-bottom:16px;" style-hover="color:#68357C;">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M15 6l-6 6 6 6"/></svg> {{ backLabel }}
             </span>
             <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:16px; margin-bottom:6px;">
               <div style="display:flex; align-items:center; gap:13px;">
@@ -798,10 +846,17 @@ class Component extends DCLogic {
       openSections: ["core-1"],
       openTasks: [],
       openDevices: [],
+      history: [],
       narrow: false,
       sidebarOpen: true,
     };
   }
+
+  navSnapshot() {
+    const s = this.state;
+    return { view: s.view, activeCluster: s.activeCluster, activeScript: s.activeScript };
+  }
+  scrollTop() { const sc = document.querySelector("main > div"); if (sc) sc.scrollTop = 0; }
 
   loadJSON(key, fallback) {
     try { const v = localStorage.getItem(key); return v ? JSON.parse(v) : fallback; }
@@ -833,20 +888,43 @@ class Component extends DCLogic {
 
   // ---- navigation ----
   go(view) {
-    this.setState({ view, searchQ: "" });
+    this.setState(s => {
+      const cur = { view: s.view, activeCluster: s.activeCluster, activeScript: s.activeScript };
+      const changed = s.view !== view;
+      return { history: changed ? s.history.concat([cur]) : s.history, view, searchQ: "" };
+    });
     if (this.state.narrow) this.setState({ sidebarOpen: false });
-    const sc = document.querySelector("main > div");
-    if (sc) sc.scrollTop = 0;
+    this.scrollTop();
   }
   openCluster(id) {
-    this.setState({ view: "clusterDetail", activeCluster: id, searchQ: "" });
+    this.setState(s => {
+      const cur = { view: s.view, activeCluster: s.activeCluster, activeScript: s.activeScript };
+      const changed = !(s.view === "clusterDetail" && s.activeCluster === id);
+      return { history: changed ? s.history.concat([cur]) : s.history, view: "clusterDetail", activeCluster: id, searchQ: "" };
+    });
     if (this.state.narrow) this.setState({ sidebarOpen: false });
-    const sc = document.querySelector("main > div"); if (sc) sc.scrollTop = 0;
+    this.scrollTop();
   }
   openScript(title) {
-    this.setState({ view: "scriptDetail", activeScript: title, searchQ: "" });
+    this.setState(s => {
+      const cur = { view: s.view, activeCluster: s.activeCluster, activeScript: s.activeScript };
+      const changed = !(s.view === "scriptDetail" && s.activeScript === title);
+      return { history: changed ? s.history.concat([cur]) : s.history, view: "scriptDetail", activeScript: title, searchQ: "" };
+    });
     if (this.state.narrow) this.setState({ sidebarOpen: false });
-    const sc = document.querySelector("main > div"); if (sc) sc.scrollTop = 0;
+    this.scrollTop();
+  }
+  back() {
+    this.setState(s => {
+      if (s.history.length) {
+        const prev = s.history[s.history.length - 1];
+        return { view: prev.view, activeCluster: prev.activeCluster, activeScript: prev.activeScript, history: s.history.slice(0, -1), searchQ: "" };
+      }
+      const fallback = s.view === "scriptDetail" ? "scripts" : s.view === "clusterDetail" ? "clusters" : "home";
+      return { view: fallback, searchQ: "" };
+    });
+    if (this.state.narrow) this.setState({ sidebarOpen: false });
+    this.scrollTop();
   }
 
   // ---- toggles ----
@@ -890,6 +968,29 @@ class Component extends DCLogic {
     const SYS = d ? d.SYSTEM_LABELS : {};
     const clusterColor = {};
     if (d) d.CLUSTERS.forEach(c => { clusterColor[c.id] = c.color; });
+
+    // back-navigation label from the most recent history entry
+    const labelForState = (entry) => {
+      if (!entry) return "Back";
+      switch (entry.view) {
+        case "home": return "Home";
+        case "core": return "Core PE Skills";
+        case "clusters": return "Cluster Exams";
+        case "scripts": return "Illness Scripts";
+        case "labs": return "Lab Values";
+        case "algorithms": return "Clinical Pathways";
+        case "devices": return "Device Mods";
+        case "abbrev": return "Abbreviations";
+        case "favorites": return "Favorites";
+        case "ack": return "Acknowledgement";
+        case "clusterDetail": { const c = d && d.CLUSTERS.find(x => x.id === entry.activeCluster); return c ? c.name : "Cluster"; }
+        case "scriptDetail": return entry.activeScript ? entry.activeScript.replace(/\b([A-Z])([A-Z]+)\b/g, (m, a, b) => a + b.toLowerCase()) : "Illness script";
+        default: return "Back";
+      }
+    };
+    const lastEntry = st.history.length ? st.history[st.history.length - 1] : null;
+    const backLabel = lastEntry ? labelForState(lastEntry) : (st.view === "scriptDetail" ? "All illness scripts" : "All clusters");
+    const goBack = () => this.back();
 
     const nav = {
       home: () => this.go("home"), core: () => this.go("core"), clusters: () => this.go("clusters"),
@@ -967,17 +1068,13 @@ class Component extends DCLogic {
         const id = s.id + ":" + ti;
         const checked = checkSet.has(id);
         const openCrit = st.openTasks.includes(id);
-        const favItem = { key: "man:" + t.task, kind: "Maneuver", label: t.task, target: "core" };
-        const isFav = favKeys.has(favItem.key);
         return {
           id, task: t.task, full: t.full, partial: t.partial, checked, open: openCrit,
           checkboxStyle: "width:22px;height:22px;border-radius:6px;flex:none;cursor:pointer;display:flex;align-items:center;justify-content:center;margin-top:1px;" + (checked ? "background:#0073A2;border:1.5px solid #0073A2;" : "background:#fff;border:1.5px solid #cfd0d1;"),
           labelColor: checked ? "#9a9b9d" : "#2b2b2d",
           critLabel: openCrit ? "Hide" : "Criteria",
-          starFill: isFav ? "#68357C" : "none", starStroke: isFav ? "#68357C" : "#c4c5c7",
           onToggleCheck: () => this.toggleIn("checks", id, "rps_checks_v1"),
           onToggleCrit: () => this.toggleIn("openTasks", id),
-          onToggleFav: () => this.toggleFav(favItem),
         };
       });
       const done = tasks.filter(t => t.checked).length;
@@ -994,39 +1091,46 @@ class Component extends DCLogic {
     const coreProgress = { done: coreDone, total: coreTotal, pct: coreTotal ? Math.round(coreDone / coreTotal * 100) : 0 };
 
     // clusters list
-    const clusters = d ? d.CLUSTERS.map(c => ({
-      id: c.id, name: c.name, color: c.color, tint: this.tint(c.color), initials: this.initials(c.name),
-      blurb: c.blurb, presCount: c.presentations.length, taskCount: c.clusterTasks.length + c.addOns.length,
-      onOpen: () => this.openCluster(c.id),
-    })) : [];
+    const clusters = d ? d.CLUSTERS.map(c => {
+      const favItem = { key: "clu:" + c.id, kind: "Cluster", label: c.name + " cluster exam", target: "cluster", cluster: c.id };
+      const isFav = favKeys.has(favItem.key);
+      return {
+        id: c.id, name: c.name, color: c.color, tint: this.tint(c.color), initials: this.initials(c.name),
+        blurb: c.blurb, presCount: c.presentations.length, taskCount: c.clusterTasks.length + c.addOns.length,
+        starFill: isFav ? "#68357C" : "none", starStroke: isFav ? "#68357C" : "#c4c5c7",
+        onOpen: () => this.openCluster(c.id),
+        onToggleFav: (e) => { if (e && e.stopPropagation) e.stopPropagation(); this.toggleFav(favItem); },
+      };
+    }) : [];
 
     // active cluster detail
-    let ac = { name: "", color: "#0073A2", blurb: "", presentations: [], coreTasks: [], clusterTasks: [], addOns: [], hasAddOns: false };
+    let ac = { name: "", color: "#0073A2", blurb: "", presentations: [], coreTasks: [], clusterTasks: [], addOns: [], hasAddOns: false, starFill: "none", starStroke: "#c4c5c7", favLabel: "Save", favTextColor: "#58595B", onToggleFav: () => {} };
     if (d) {
       const c = d.CLUSTERS.find(x => x.id === st.activeCluster) || d.CLUSTERS[0];
       const mapTask = (t, ti, kind) => {
         const id = c.id + ":" + kind + ":" + ti;
         const checked = checkSet.has(id);
         const openCrit = st.openTasks.includes(id);
-        const favItem = { key: "man:" + t.task, kind: "Maneuver", label: t.task, target: "cluster", cluster: c.id };
-        const isFav = favKeys.has(favItem.key);
         return {
           id, task: t.task, full: t.full, partial: t.partial, checked, open: openCrit,
           checkboxStyle: "width:22px;height:22px;border-radius:6px;flex:none;cursor:pointer;display:flex;align-items:center;justify-content:center;margin-top:1px;" + (checked ? "background:" + c.color + ";border:1.5px solid " + c.color + ";" : "background:#fff;border:1.5px solid #cfd0d1;"),
           labelColor: checked ? "#9a9b9d" : "#2b2b2d",
           critLabel: openCrit ? "Hide" : "Criteria",
-          starFill: isFav ? "#68357C" : "none", starStroke: isFav ? "#68357C" : "#c4c5c7",
           onToggleCheck: () => this.toggleIn("checks", id, "rps_checks_v1"),
           onToggleCrit: () => this.toggleIn("openTasks", id),
-          onToggleFav: () => this.toggleFav(favItem),
         };
       };
+      const cFav = { key: "clu:" + c.id, kind: "Cluster", label: c.name + " cluster exam", target: "cluster", cluster: c.id };
+      const cIsFav = favKeys.has(cFav.key);
       ac = {
         name: c.name, color: c.color, blurb: c.blurb,
         presentations: c.presentations, coreTasks: c.coreTasks,
         clusterTasks: c.clusterTasks.map((t, i) => mapTask(t, i, "c")),
         addOns: c.addOns.map((t, i) => mapTask(t, i, "a")),
         hasAddOns: c.addOns.length > 0,
+        starFill: cIsFav ? "#68357C" : "none", starStroke: cIsFav ? "#68357C" : "#c4c5c7",
+        favLabel: cIsFav ? "Saved" : "Save", favTextColor: cIsFav ? "#68357C" : "#58595B",
+        onToggleFav: () => this.toggleFav(cFav),
       };
     }
 
@@ -1131,6 +1235,7 @@ class Component extends DCLogic {
     return {
       ready: !!d,
       nav, navStyles, badgeStyle, favBadgeStyle, favCount: st.favs.length,
+      goBack, backLabel,
       sidebarStyle, backdropStyle, hamburgerStyle,
       toggleSidebar: () => this.setState({ sidebarOpen: !st.sidebarOpen }),
       closeSidebar: () => this.setState({ sidebarOpen: false }),
